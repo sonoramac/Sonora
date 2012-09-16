@@ -30,7 +30,7 @@ For the next steps, you have two options. There is a fast way to compile Sonora 
 
 #### Fastest way
 
-- Download the [Libraries.zip](#) file from the Downloads section 
+- Download the [Libraries.zip](https://github.com/downloads/indragiek/Sonora/Libraries.zip) file from the Downloads section 
 - Unzip it into the Sonora folder, replacing existing directories if necessary
 
 #### Best way
