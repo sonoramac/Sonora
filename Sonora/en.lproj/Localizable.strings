@@ -1,0 +1,171 @@
+/* 
+  Localizable.strings
+  Sonora
+
+  Created by Indragie Karunaratne on 11-07-08.
+  Copyright 2012 Indragie Karunaratne. All rights reserved.
+*/
+
+
+/* About */
+"Version" = "Version %@";
+
+/* LastFM */
+"LastFMAuthAlertTitle" = "Last.fm authentication is invalid.";
+"LastFMAuthAlertDefaultButton" = "Re-authenticate"; 
+"LastFMAuthAlertAlternateButton" = "Cancel";
+"LastFMAuthAlertText" = "Your Last.fm credentials are invalid. Please re-authenticate in order to continue scrobbling.";
+
+/* Search */
+"SNRSearchFieldPlaceholder" = "What do you want to listen to?";
+"albums" = "albums";
+"songs" = "songs";
+"album" = "album";
+"song" = "song";
+"remain" = "remain";
+"remains" = "remains";
+"selected" = "selected";
+
+/* Metadata */
+"DropMessage" = "Drop songs here to create a mix";
+"MetadataEditor" = "Metadata Editor";
+"MultipleSelectionPlaceholder" = "<Multiple Values>";
+"DropArtwork" = "Drop artwork here";
+"DropMixArtwork" = "Drop mix artwork here";
+"MultipleAlbumsSelected" = "Multiple albums selected";
+"NewMix" = "New Mix";
+"NewMixQueue" = "New Mix From Queue";
+
+/* Growl */
+"GrowlImportediTunesTracksTitle" = "Imported %lu tracks";
+"GrowlImportediTunesTracksDescription" = "%lu new tracks were imported from iTunes.";
+"GrowlImportedTracksDescription" = "%lu tracks were imported.";
+"SNRGrowlNotificationNowPlaying" = "Now Playing";
+"SNRGrowlNotificationImportediTunesTracks" = "Imported Tracks";
+"SNRGrowlNotificationLovedTrack" = "Loved Track on Last.fm";
+
+/* Preferences */
+"PreferencesGeneral" = "General";
+"PreferencesSync" = "Sync";
+"PreferencesLastFM" = "Last.fm";
+"ChooseMusicFolderLocation" = "Change Sonora Music Folder Location";
+"Choose" = "Choose";
+"MovingMusicFolder" = "Moving music folder to %@";
+"SignIn" = "Sign in";
+"SignOut" = "Sign out";
+"SignedInAs" = "You are signed in as ";
+
+/* Window */
+"HideTrafficLights" = "Hide Traffic Lights";
+"ShowTrafficLights" = "Show Traffic Lights";
+
+/* Sharing */
+"NothingPlaying" = "Nothing is playing";
+
+/* Importing */
+"ImportingMessage" = "Importing %@ songs. One moment please...";
+"IndexingMessage" = "Building search index...";
+"iTunesLibraryDoesntExistError" = "iTunes Library does not exist at path: %@";
+"iTunesLibraryNoPlaylistsError" = "No music playlist in iTunes Library at path: %@";
+"SetupPlistError" = "Error writing preference file. Please make sure that ~/Library/Application Support/Sonora is a directory and not a file.";
+"FirstImportTitle" = "This is your first time importing music.";
+"FirstImportMessage" = "Music you import directly into Sonora will not appear in iTunes. If you want your music in both iTunes and Sonora's libraries, you must import music in iTunes, and Sonora will automatically retrieve it at startup.";
+"FirstImportCheckboxTitle" = "Copy music to Sonora music folder";
+"FirstImportDefaultButton" = "Import";
+"FirstImportAlternateButton" = "Cancel";
+"FirstMetadataiTunesTitle" = "You are editing metadata for an iTunes library item.";
+"FirstMetadataiTunesMessage" = "Changes to the metadata of iTunes library items will only appear in Sonora and will not be written to the file(s) themselves.";
+"ImportiTunesTitle" = "Import new music from iTunes at startup?";
+"ImportiTunesMessage" = "Sonora can automatically check and import new songs and playlists from iTunes every time it starts. No audio files will be copied in this process.";
+"ImportiTunesDefaultButton" = "Yes, please";
+"ImportiTunesAlternateButton" = "No, thank you";
+
+/* Transition */
+"IncompatibleLibraryTitle" = "Your library is incompatible with this version of Sonora.";
+"IncompatibleLibraryMessage" = "Sonora needs to reimport your music library to make it compatible with the new library format.";
+"IncompatibleLibraryDefaultButton" = "Reimport";
+"IncompatibleLibraryAlternateButton" = "Quit";
+"TransitionLibraryTitle" = "Your library must be updated.";
+"TransitionLibraryMessage" = "This version of Sonora requires that your library be updated to the new format. Click Update to begin the transition.";
+"TransitionLibraryDefaultButton" = "Update";
+"TransitionLibraryAlternateButton" = "Quit";
+"TransitionProgressMessage" = "Updating library...";
+
+/* Library */
+"DeleteAlertTitle" = "Do you want to remove the selected items from your library and keep the files or move them to the Trash?";
+"DeleteAlertAlternateTitle" = "Do you want to remove the selected items from your library?";
+"DeleteAlertDefaultButton" = "Keep Files";
+"DeleteAlertAlternateDefaultButton" = "Remove";
+"DeleteAlertAlternateButton" = "Cancel";
+"DeleteAlertOtherButton" = "Move to Trash";
+"DeleteMixSongsAlertTitle" = "Are you sure you want to remove the selected songs from this mix?";
+"DeleteMixSongsAlertDefaultButton" = "Delete";
+"DeleteMixSongsAlertAlternateButton" = "Cancel";
+"DeleteMixAlertTitle" = "Do you want to remove the selected mixes from your library?";
+"DeleteMixAlertDefaultButton" = "Remove";
+"DeleteMixAlertAlternateButton" = "Cancel";
+"ShuffleArtist" = "Shuffle Artist";
+"ShuffleArtists" = "Shuffle Artists";
+"SetArtwork" = "Set Artwork";
+"Enqueued" = "Enqueued";
+
+/* Albums Grid */
+"NoMusic" = "No Music";
+
+/* Sidebar */
+"Collections" = "COLLECTIONS";
+"Artists" = "ARTISTS";
+"Albums" = "Albums";
+"Mixes" = "Mixes";
+"Compilations" = "Compilations";
+
+/* Menu Items */
+"Enqueue" = "Enqueue";
+"Play" = "Play";
+"Pause" = "Pause";
+"Previous" = "Previous";
+"Next" = "Next";
+"Shuffle" = "Shuffle";
+"Delete" = "Delete";
+"RemoveArtwork" = "Remove Artwork";
+"DownloadArtwork" = "Download Artwork";
+"EditMetadata" = "Edit Metadata";
+"HideArtistsList" = "Hide Sidebar";
+"ShowArtistsList" = "Show Sidebar";
+"ShowInFinder" = "Show in Finder";
+"ExportM3U" = "Export as M3U";
+"SaveM3U" = "Save M3U Playlist";
+"LoveTrack" = "Love Track on Last.fm";
+"ScrobbleTracks" = "Scrobble Tracks to Last.fm";
+
+/* Time */
+"second" = "second";
+"seconds" = "seconds";
+"minute" = "minute";
+"minutes" = "minutes";
+"hour" = "hour";
+"hours" = "hours";
+"day" = "day";
+"days" = "days";
+"week" = "week";
+"weeks" = "weeks";
+"month" = "month";
+"months" = "months";
+"year" = "year";
+"years" = "years";
+
+/* Queue */
+"RemoveItem" = "Remove \"%@\"";
+"RepeatNone" = "None";
+"RepeatAll" = "All";
+"RepeatOne" = "One";
+"Repeat" = "Repeat";
+"Clear" = "Clear";
+"StopPlayback" = "Stop Playback";
+"QueueEmpty" = "Queue empty";
+
+/* Object Placeholders */
+"UntitledArtist" = "Untitled Artist";
+"UntitledAlbum" = "Untitled Album";
+"UntitledSong" = "Untitled Song";
+"UntitledMix" = "Untitled Mix";

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>volume</key>
+	<real>0.5</real>
+	<key>cellWidth</key>
+	<integer>250</integer>
+	<key>scrobble</key>
+	<true/>
+	<key>growlNowPlaying</key>
+	<true/>
+	<key>growlNewImport</key>
+	<true/>
+	<key>copyMusic</key>
+	<true/>
+	<key>synciTunesPlaylists</key>
+	<true/>
+	<key>firstImport</key>
+	<true/>
+	<key>firstMetadataiTunes</key>
+	<true/>
+</dict>
+</plist>

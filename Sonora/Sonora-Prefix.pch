@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'Sonora' target in the 'Sonora' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    #import <ApplicationServices/ApplicationServices.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import <CoreData/CoreData.h>
+    #import "SNRCommon.h"
+    #import "SNRConstants.h"
+    #import "SonoraAppDelegate.h"
+#endif

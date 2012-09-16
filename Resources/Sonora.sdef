@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary xmlns:xi="http://www.w3.org/2001/XInclude" title="Sonora Terminology">
+
+<suite name="Standard Suite" code="????" description="Common classes and commands for most applications.">
+	<cocoa name="NSCoreSuite" />
+	<class name="application" code="capp" description="The application's top level scripting object.">
+	<cocoa class="NSApplication" />
+	<property name="name" code="pnam" type="text" access="r" description="The name of the application." />
+	<property name="frontmost" code="pisf" type="boolean" access="r" description="Is this the frontmost (active) application?">
+		<cocoa key="isActive" />
+	</property>
+	<property name="version" code="vers" type="text" access="r" description="The version of the application." />
+	<responds-to name="quit">
+		<cocoa method="handleQuitScriptCommand:" />
+	</responds-to>
+	</class>
+	<command name="quit" code="aevtquit" description="Quit an application.">
+		<cocoa class="NSQuitCommand" />
+	</command>
+</suite>
+
+<suite name="Sonora Suite" code="SNrA" description="Sonora Scripting Suite">
+	<value-type name="jpeg image data" code="snJp" description="Image data in JPEG format.">
+		<cocoa class="NSData" />
+	</value-type>
+	<value-type name="tiff image data" code="snTf" description="Image data in TIFF format.">
+		<cocoa class="NSData" />
+	</value-type>
+	<value-type name="image" code="snIm" description="Image.">
+		<cocoa class="NSImage" />
+	</value-type>
+	<class name="application" code="capp" description="The application's top-level scripting object.">
+		<cocoa class="NSApplication" />
+		<property name="player state" code="pSta" type="integer" access="r" description="Player state (playing = 2, paused = 1, or stopped = 0)">
+			<cocoa key="playerState" />
+		</property>
+		<property name="track" code="trNm" type="text" access="r" description="Current track title." />
+		<property name="artist" code="trAr" type="text" access="r" description="Current track artist." />
+		<property name="album artist" code="trAm" type="text" access="r" description="Current track album artist.">
+			<cocoa key="albumArtist" />
+		</property>
+		<property name="album" code="trAl" type="text" access="r" description="Current track album." />
+		<property name="jpeg artwork data" code="trAj" access="r" description="Current track artwork data in JPEG format.">
+			<cocoa key="jpegArtworkData" />
+			<type type="jpeg image data" />
+		</property>
+		<property name="tiff artwork data" code="trAt" access="r" description="Current track artwork data in TIFF format.">
+			<cocoa key="tiffArtworkData" />
+			<type type="tiff image data" />
+		</property>
+		<property name="artwork image" code="trAi" access="r" description="Current track artwork as an image.">
+			<cocoa key="artworkImage" />
+			<type type="image" />
+		</property>
+		<property name="unique ID" code="trUd" type="text" access="r" description="Unique identifier for the current track.">
+			<cocoa key="uniqueID" />
+		</property>
+		<property name="current time" code="pCrt" type="real" access="rw" description="The current playback position.">
+			<cocoa key="currentTime" />
+		</property>
+		<property name="total time" code="pTtl" type="real" access="r" description="The total time of the currenty playing track." >
+			<cocoa key="totalTime" />
+		</property>
+		<property name="player volume" code="pVol" type="real" access="rw" description="Player volume (0.0 to 1.0)">
+			<cocoa key="playerVolume" />
+		</property>
+		<property name="repeat state" code="pRpt" type="integer" access="rw" description="Player repeat state (none = 0, repeat one = 1, repeat all = 2)">
+			<cocoa key="repeatState" />
+		</property>
+	</class>
+	<command name="pause" code="SNrApaus" description="Pause playback.">
+		<cocoa class="SNRASPauseCommand" />
+	</command>
+	<command name="play" code="SNrAplay" description="Begin playback.">
+		<cocoa class="SNRASPlayCommand" />
+	</command>
+	<command name="playpause" code="SNrAplps" description="Toggle playback between playing and paused.">
+		<cocoa class="SNRASPlayPauseCommand" />
+	</command>
+	<command name="stop" code="SNrAstop" description="Stop playback and clear the queue.">
+		<cocoa class="SNRASStopCommand" />
+	</command>
+	<command name="next" code="SNrAnext" description="Skip to the next track in the queue.">
+		<cocoa class="SNRASNextCommand" />
+	</command>
+	<command name="previous" code="SNrAprev" description="Skip to the previous track in the queue.">
+		<cocoa class="SNRASPreviousCommand" />
+	</command>
+	<command name="shuffle" code="SNrAshuf" description="Shuffle the tracks in the queue.">
+		<cocoa class="SNRASShuffleCommand" />
+	</command>
+</suite>
+</dictionary>
+			
