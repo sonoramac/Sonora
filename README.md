@@ -74,7 +74,7 @@ One of the reasons we open sourced Sonora is because a music player is difficult
 
 If you want to contribute, please take a look at the issues for this repository and see if there are any bugs in there that you want to fix or features you want to implement. If you need a design to implement a particular feature, please create a new issue with the **design** tag and we'll do our best to supply PSDs.
 
-Once you have made additions, please send us a pull request and we will review and merge your contributions.
+Once you have made additions, please send us a pull request and we will review and merge your contributions. If you're actively making large contributions to Sonora, we would love to add you to the team and give you push access to the repository so that you won't need to bother with pull requests.
 
 ### Bugs
 
