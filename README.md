@@ -46,7 +46,6 @@ pod repo add Sonora-Podspecs git://github.com/sonoramac/Podspecs.git master
 cd <project directory>
 pod install
 ```
-- **NOTE:** At the moment, CocoaPods doesn't support turning ARC on and off on a per file basis. In the **OEGridView** pod, `NSColor+OEAdditions.m` needs to be compiled without ARC even though the rest of the source files need it. To turn off ARC for this file, click on the Pods project in the navigator, chose the Pods static library target, go to Build Phases, and under the Compile Sources build phase find the `NSColor+OEAdditions.m` file and remove the `-fobjc-arc` flag.
 - Download the submodules:
 
 ```
