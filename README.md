@@ -16,7 +16,7 @@ Sonora (previously sold on the App Store, **now open source**) is a relatively n
 
 ### Why was this open sourced?
 
-A lot of reasons. Read [this blog post](#) for more information on our decision.
+A lot of reasons. Read [this blog post](http://blog.indragie.com/post/1-2-open-source) for more information on our decision.
 
 ### How to compile
 
