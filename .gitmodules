@@ -1,9 +1,11 @@
 [submodule "External/SFBAudioEngine"]
 	path = External/SFBAudioEngine
 	url = git://github.com/sonoramac/SFBAudioEngine.git
+	ignore = dirty
 [submodule "External/SNRHUDKit"]
 	path = External/SNRHUDKit
 	url = git://github.com/sonoramac/SNRHUDKit.git
+	ignore = dirty
 [submodule "External/Sparkle"]
 	path = External/Sparkle
 	url = git://github.com/sonoramac/Sparkle.git
