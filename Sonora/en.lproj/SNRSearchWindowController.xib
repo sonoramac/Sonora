@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
 		<string key="IBDocument.SystemVersion">12B19</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2829</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2829</string>
+			<string key="NS.object.0">2840</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSButton</string>
@@ -249,7 +249,6 @@
 											<string key="NSFrame">{{1, 119}, {223, 11}}</string>
 											<reference key="NSSuperview" ref="613339851"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:1216</string>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											<int key="NSsFlags">257</int>
@@ -291,6 +290,7 @@
 				<string key="NSMinSize">{457, 292}</string>
 				<string key="NSMaxSize">{457, 292}</string>
 				<string key="NSFrameAutosaveName"/>
+				<int key="NSWindowCollectionBehavior">1</int>
 				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
 			<object class="NSMenu" id="546031182">
