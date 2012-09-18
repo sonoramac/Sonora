@@ -2024,7 +2024,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/mogenerator -m \"$SRCROOT/Sonora/Sonora.xcdatamodeld/Sonora.xcdatamodel\" --base-class SNRManagedObject --template-var arc=true -O \"$SRCROOT/Sonora/Classes\"";
+			shellScript = "mogenerator -m \"$SRCROOT/Sonora/Sonora.xcdatamodeld/Sonora.xcdatamodel\" --base-class SNRManagedObject --template-var arc=true -O \"$SRCROOT/Sonora/Classes\"";
 		};
 		3FE029B3DD9F48468A007F2F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
