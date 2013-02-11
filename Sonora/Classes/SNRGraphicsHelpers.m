@@ -44,7 +44,8 @@ CGColorSpaceRef SNRGetRGBColorSpace(void)
 
 CGContextRef SNRCGContextCreateWithSize(CGSize size) 
 {
-    return CGBitmapContextCreate(NULL, size.width, size.height, 8, 4 * size.width, SNRGetRGBColorSpace(), kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
+    size_t widthRounded = (size_t)(size.width + 0.5);
+    return CGBitmapContextCreate(NULL, widthRounded, size.height, 8, 4 * widthRounded, SNRGetRGBColorSpace(), kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
 }
 
 #pragma mark - Images
