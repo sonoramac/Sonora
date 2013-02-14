@@ -101,7 +101,8 @@ static NSString* const kImageQueuePlaceholder = @"default-queue-artwork";
         }];
         _playLayer = [SNRQueuePlayLayer layer];
         [_playLayer setMouseUpBlock:^(SNRQueuePlayLayer *layer) {
-            [self.queueController playPause];
+            SNRQueueViewCell *strongSelf = weakSelf;
+            [strongSelf.queueController playPause];
         }];
         _playLayer.hidden = YES;
         _highlightLayer = [OEGridLayer layer];
