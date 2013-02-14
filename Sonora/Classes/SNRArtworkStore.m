@@ -77,8 +77,10 @@
     if(!object) return nil;
     NSURL* artworkPath = [self artworkPathForObject:object];
     NSError* error;
-    NSFileHandle * file = [NSFileHandle fileHandleForReadingFromURL:artworkPath error: &error];
-    return [file readDataToEndOfFile];
+    NSData * data = [NSData dataWithContentsOfURL:artworkPath options:NSDataReadingUncached error:&error];
+    if(error)
+        [[NSApplication sharedApplication] presentError:error];
+    return data;
 }
 
 @end
