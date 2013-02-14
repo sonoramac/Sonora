@@ -7,6 +7,7 @@
 extern const struct SNRMixArtworkAttributes {
 	__unsafe_unretained NSString *data;
 	__unsafe_unretained NSString *generated;
+	__unsafe_unretained NSString *uuid;
 } SNRMixArtworkAttributes;
 
 extern const struct SNRMixArtworkRelationships {
@@ -17,6 +18,7 @@ extern const struct SNRMixArtworkFetchedProperties {
 } SNRMixArtworkFetchedProperties;
 
 @class SNRMix;
+
 
 
 
@@ -33,7 +35,9 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* data;
+
 
 
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
@@ -41,7 +45,9 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* generated;
+
 
 
 @property BOOL generatedValue;
@@ -54,7 +60,17 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRMix* mix;
+@property (nonatomic, strong) NSData* uuid;
+
+
+
+//- (BOOL)validateUuid:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) SNRMix *mix;
 
 //- (BOOL)validateMix:(id*)value_ error:(NSError**)error_;
 
@@ -82,6 +98,12 @@ extern const struct SNRMixArtworkFetchedProperties {
 
 - (BOOL)primitiveGeneratedValue;
 - (void)setPrimitiveGeneratedValue:(BOOL)value_;
+
+
+
+
+- (NSData*)primitiveUuid;
+- (void)setPrimitiveUuid:(NSData*)value;
 
 
 

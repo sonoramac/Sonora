@@ -33,6 +33,7 @@
 #import "SNRThumbnailArtwork.h"
 #import "SNRSong.h"
 #import "SNRAudioMetadata.h"
+#import "SNRArtworkStore.h"
 
 #import "NSManagedObjectContext-SNRAdditions.h"
 #import "NSUserDefaults-SNRAdditions.h"
@@ -83,15 +84,27 @@ static NSString* const kImageSearchIcon = @"album-Template";
 
 #pragma mark - Artwork
 
+- (NSData*)artworkData
+{
+    SNRArtworkStore* artworkStore = [[SNRArtworkStore alloc] initWithName:@"Artwork"];
+    return [artworkStore artworkForObject:[self artwork]];
+}
+
 - (NSImage*)artworkImage
 {
-    NSData *data = self.artwork.data;
+    NSData* data = [self artworkData];
     return (data != nil) ? [[NSImage alloc] initWithData:data] : [NSImage imageNamed:kImageGenericArtwork];
+}
+
+- (NSData*)thumbnailArtworkData
+{
+    SNRArtworkStore* thumbnailStore = [[SNRArtworkStore alloc] initWithName:@"ArtworkThumbnails"];
+    return [thumbnailStore artworkForObject:[self thumbnailArtwork]];
 }
 
 - (NSImage*)thumbnailArtworkImage
 {
-    NSData *data = self.thumbnailArtwork.data;
+    NSData* data = [self thumbnailArtworkData];
     return (data != nil) ? [[NSImage alloc] initWithData:data] : [NSImage imageNamed:kImageGenericArtworkThumbnail];
 }
 
@@ -106,12 +119,15 @@ static NSString* const kImageSearchIcon = @"album-Template";
 
 - (void)setArtworkWithProcessedLargeData:(NSData*)large thumbnailData:(NSData*)thumbnail
 {
+    SNRArtworkStore* artworkStore = [[SNRArtworkStore alloc] initWithName:@"Artwork"];
+    SNRArtworkStore* thumbnailStore = [[SNRArtworkStore alloc] initWithName:@"ArtworkThumbnails"];
+    
     NSManagedObjectContext *ctx = self.managedObjectContext;
     if (self.artwork) { [self removeArtwork]; }
     self.artwork = [ctx createObjectOfEntityName:kEntityNameArtwork];
-    self.artwork.data = large;
+    [artworkStore setArtworkForObject:[self artwork] data:large];
     self.thumbnailArtwork = [ctx createObjectOfEntityName:kEntityNameThumbnailArtwork];
-    self.thumbnailArtwork.data = thumbnail;
+    [thumbnailStore setArtworkForObject:[self thumbnailArtwork] data:thumbnail];
     if ([[NSUserDefaults standardUserDefaults] embedArtwork]) {
         for (SNRSong *song in self.songs) {
             if (song.iTunesPersistentID) {

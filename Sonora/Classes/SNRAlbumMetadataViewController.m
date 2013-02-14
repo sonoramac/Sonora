@@ -292,7 +292,7 @@
         [self performBlockIgnoringKVONotifications:^{
             blockSelf.name = album.name;
             blockSelf.artist = album.artist.name;
-            NSData *artwork = album.artwork.data;
+            NSData *artwork = album.artworkData;
             blockSelf.artwork = (artwork != nil) ? [[NSImage alloc] initWithData:artwork] : nil;
             blockSelf.compilation = album.compilation;
         }];

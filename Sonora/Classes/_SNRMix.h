@@ -43,7 +43,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* dateModified;
+
 
 
 //- (BOOL)validateDateModified:(id*)value_ error:(NSError**)error_;
@@ -51,7 +53,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* iTunesPersistentID;
+
 
 
 //- (BOOL)validateITunesPersistentID:(id*)value_ error:(NSError**)error_;
@@ -59,7 +63,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -67,7 +73,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* popularity;
+
 
 
 @property double popularityValue;
@@ -79,7 +87,9 @@ extern const struct SNRMixFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* ranking;
+
 
 
 @property int32_t rankingValue;
@@ -92,21 +102,21 @@ extern const struct SNRMixFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRMixArtwork* artwork;
+@property (nonatomic, strong) SNRMixArtwork *artwork;
 
 //- (BOOL)validateArtwork:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSOrderedSet* songs;
+@property (nonatomic, strong) NSOrderedSet *songs;
 
 - (NSMutableOrderedSet*)songsSet;
 
 
 
 
-@property (nonatomic, strong) SNRMixThumbnailArtwork* thumbnailArtwork;
+@property (nonatomic, strong) SNRMixThumbnailArtwork *thumbnailArtwork;
 
 //- (BOOL)validateThumbnailArtwork:(id*)value_ error:(NSError**)error_;
 

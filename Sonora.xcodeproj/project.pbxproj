@@ -284,6 +284,7 @@
 		03F9AD8B1411AAB7006E2873 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 03F9AD8A1411AAB7006E2873 /* icon.icns */; };
 		03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
 		03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
+		2B69EBFB16CBA1A0000992E1 /* SNRArtworkStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B69EBFA16CBA19F000992E1 /* SNRArtworkStore.m */; };
 		86F6993C5FE244739816BDB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10314D7A429A4257993EE387 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -817,6 +818,8 @@
 		03F9AD8A1411AAB7006E2873 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = Resources/icon.icns; sourceTree = "<group>"; };
 		03FDF84C15E32D4E009A54B8 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = External/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		10314D7A429A4257993EE387 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B69EBF916CBA19F000992E1 /* SNRArtworkStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRArtworkStore.h; path = Classes/SNRArtworkStore.h; sourceTree = "<group>"; };
+		2B69EBFA16CBA19F000992E1 /* SNRArtworkStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRArtworkStore.m; path = Classes/SNRArtworkStore.m; sourceTree = "<group>"; };
 		4695956A88A843CEA204DF02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -1714,6 +1717,8 @@
 				03B9717C15E1A558006F81AF /* SonoraAppDelegate.m */,
 				03B9718015E1A55F006F81AF /* SNRCommon.h */,
 				03B9718115E1A563006F81AF /* SNRCommon.m */,
+				2B69EBF916CBA19F000992E1 /* SNRArtworkStore.h */,
+				2B69EBFA16CBA19F000992E1 /* SNRArtworkStore.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2195,6 +2200,7 @@
 				0392ED9A15E1D1FD0096B723 /* SNRAlbumButtonLayer.m in Sources */,
 				0314B0B715E29E510074B929 /* SNRAlbumEmptyView.m in Sources */,
 				031324F516058A9F00CE34AC /* SNRConstants.m in Sources */,
+				2B69EBFB16CBA1A0000992E1 /* SNRArtworkStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

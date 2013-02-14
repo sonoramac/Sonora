@@ -33,7 +33,9 @@ extern const struct SNRMixThumbnailArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* data;
+
 
 
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
@@ -41,7 +43,9 @@ extern const struct SNRMixThumbnailArtworkFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* generated;
+
 
 
 @property BOOL generatedValue;
@@ -54,7 +58,7 @@ extern const struct SNRMixThumbnailArtworkFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRMix* mix;
+@property (nonatomic, strong) SNRMix *mix;
 
 //- (BOOL)validateMix:(id*)value_ error:(NSError**)error_;
 

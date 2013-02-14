@@ -4,7 +4,7 @@
 #import "_SNRArtwork.h"
 
 const struct SNRArtworkAttributes SNRArtworkAttributes = {
-	.data = @"data",
+	.uuid = @"uuid",
 };
 
 const struct SNRArtworkRelationships SNRArtworkRelationships = {
@@ -37,7 +37,7 @@ const struct SNRArtworkFetchedProperties SNRArtworkFetchedProperties = {
 	return (SNRArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -47,7 +47,7 @@ const struct SNRArtworkFetchedProperties SNRArtworkFetchedProperties = {
 
 
 
-@dynamic data;
+@dynamic uuid;
 
 
 

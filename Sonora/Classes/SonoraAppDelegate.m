@@ -609,7 +609,7 @@ static NSString* const kiTunesAppPath = @"/Applications/iTunes.app";
 
 - (NSData *)jpegArtworkData
 {
-    return [[[[[self.queueCoordinator activeQueueController] currentSong] album] artwork] data];
+    return [[[[self.queueCoordinator activeQueueController] currentSong] album] artworkData];
 }
 
 - (NSData *)tiffArtworkData
