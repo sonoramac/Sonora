@@ -31,5 +31,4 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SNRArrayController : NSArrayController
-@property (nonatomic, strong) NSArray *fetchSortDescriptors;
 @end

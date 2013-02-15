@@ -98,7 +98,7 @@ static NSString* const kExpandSidebarIdleNotification = @"SNRExpandSidebarIdleNo
     _arrayController = [[SNRArrayController alloc] init];
     [_arrayController setManagedObjectContext:managedObjectContext];
     [_arrayController setEntityName:kEntityNameArtist];
-    [_arrayController setFetchSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:kSortSortNameKey ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)], nil]];
+    [_arrayController setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:kSortSortNameKey ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)], nil]];
     [_arrayController setFetchPredicate:[NSPredicate predicateWithFormat:@"(albums.@count != 0) AND (SELF != %@)", _compilationsArtist]];
     [_arrayController setAutomaticallyRearrangesObjects:YES];
     [_arrayController setClearsFilterPredicateOnInsertion:YES];

@@ -31,11 +31,9 @@
 #import "SNRArrayController.h"
 
 @implementation SNRArrayController
-@synthesize fetchSortDescriptors = _fetchSortDescriptors;
 - (BOOL)fetchWithRequest:(NSFetchRequest *)fetchRequest merge:(BOOL)merge error:(NSError **)error
 {
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setSortDescriptors:self.fetchSortDescriptors];
     return [super fetchWithRequest:fetchRequest merge:merge error:error];
     
 }
