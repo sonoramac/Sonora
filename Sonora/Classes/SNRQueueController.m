@@ -193,7 +193,7 @@ static NSString* const kImageGeneric = @"default-queue-artwork";
 - (SNRSong *)currentSong { return [self.currentQueueItem song]; }
 - (NSTimeInterval)currentPlaybackTime { return [_player currentTime]; }
 - (NSTimeInterval)totalPlaybackTime { return [_player totalTime]; }
-
+- (SNRAudioPlayer*) audioPlayer { return _player; }
 
 - (void)setQueueView:(SNRQueueView *)queueView
 {
