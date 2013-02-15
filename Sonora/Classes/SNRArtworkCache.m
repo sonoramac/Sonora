@@ -33,6 +33,7 @@
 #import "SNRArtwork.h"
 #import "SNRLastFMEngine.h"
 #import "SNRArtist.h"
+#import "SNRArtworkStore.h"
 
 #import "SNRGraphicsHelpers.h"
 #import "NSManagedObjectContext-SNRAdditions.h"
@@ -50,6 +51,7 @@
     dispatch_queue_t _backgroundQueue;
     NSManagedObjectContext *_downloadContext;
     NSMutableArray *_artworkQueue;
+    SNRArtworkStore *_artworkStore;
 }
 @synthesize downloadContext = _downloadContext;
 
@@ -63,6 +65,7 @@
         [_cachedArtwork setCountLimit:100];
         _handlerBlocks = [NSMutableDictionary dictionary];
         _artworkQueue = [NSMutableArray array];
+        _artworkStore = [[SNRArtworkStore alloc] initWithName:@"Artwork"];
         
     }
     return self;
@@ -103,7 +106,7 @@
     NSManagedObjectID *objectID = [object objectID];
     NSImage *artwork = [_cachedArtwork objectForKey:objectID];
     if (artwork) { return artwork; }
-    NSData *artworkData = [[object artwork] data];
+    NSData* artworkData = [_artworkStore artworkForObject:[object artwork]];
     NSImage *jpegImage = [[self class] scaledArtworkWithData:artworkData artworkSize:size];
     [self setCachedArtwork:jpegImage forObject:object];
     [[object managedObjectContext] refreshObject:[object artwork] mergeChanges:NO];
@@ -113,7 +116,7 @@
 - (void)createArtworkForObjectAndCallHandler:(id)object artworkSize:(NSSize)size
 {
     NSManagedObjectID *objectID = [object objectID];
-    NSData *artworkData = [[object artwork] data];
+    NSData* artworkData = [_artworkStore artworkForObject:[object artwork]];
     dispatch_async(_backgroundQueue, ^{
         NSImage *jpegImage = [[self class] scaledArtworkWithData:artworkData artworkSize:size];
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -4,7 +4,7 @@
 #import "_SNRThumbnailArtwork.h"
 
 const struct SNRThumbnailArtworkAttributes SNRThumbnailArtworkAttributes = {
-	.data = @"data",
+	.uuid = @"uuid",
 };
 
 const struct SNRThumbnailArtworkRelationships SNRThumbnailArtworkRelationships = {
@@ -37,7 +37,7 @@ const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProp
 	return (SNRThumbnailArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -47,7 +47,7 @@ const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProp
 
 
 
-@dynamic data;
+@dynamic uuid;
 
 
 

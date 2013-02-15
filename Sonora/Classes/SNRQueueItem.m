@@ -115,7 +115,7 @@
 - (void)postGrowlNotification
 {
     if ([[NSUserDefaults standardUserDefaults] growlNowPlaying]) {
-        [GrowlApplicationBridge notifyWithTitle:self.song.name description:self.song.album.artist.name notificationName:kGrowlNotificationNowPlaying iconData:self.song.album.thumbnailArtwork.data priority:0 isSticky:NO clickContext:@"" identifier:kGrowlNotificationNowPlaying];
+        [GrowlApplicationBridge notifyWithTitle:self.song.name description:self.song.album.artist.name notificationName:kGrowlNotificationNowPlaying iconData:self.song.album.thumbnailArtworkData priority:0 isSticky:NO clickContext:@"" identifier:kGrowlNotificationNowPlaying];
     }
 }
 

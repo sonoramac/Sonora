@@ -31,7 +31,9 @@ extern const struct SNRPlayCountFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* date;
+
 
 
 //- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
@@ -40,7 +42,7 @@ extern const struct SNRPlayCountFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRSong* song;
+@property (nonatomic, strong) SNRSong *song;
 
 //- (BOOL)validateSong:(id*)value_ error:(NSError**)error_;
 

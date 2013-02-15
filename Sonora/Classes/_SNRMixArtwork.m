@@ -6,6 +6,7 @@
 const struct SNRMixArtworkAttributes SNRMixArtworkAttributes = {
 	.data = @"data",
 	.generated = @"generated",
+	.uuid = @"uuid",
 };
 
 const struct SNRMixArtworkRelationships SNRMixArtworkRelationships = {
@@ -38,12 +39,13 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 	return (SNRMixArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"generatedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"generated"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -80,6 +82,13 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 - (void)setPrimitiveGeneratedValue:(BOOL)value_ {
 	[self setPrimitiveGenerated:[NSNumber numberWithBool:value_]];
 }
+
+
+
+
+
+@dynamic uuid;
+
 
 
 

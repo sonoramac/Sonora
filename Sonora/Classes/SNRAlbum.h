@@ -32,7 +32,9 @@
 
 @interface SNRAlbum : _SNRAlbum {}
 @property (nonatomic, readonly) double duration;
+@property (nonatomic, readonly) NSData *artworkData;
 @property (nonatomic, readonly) NSImage *artworkImage;
+@property (nonatomic, readonly) NSData *thumbnailArtworkData;
 @property (nonatomic, readonly) NSImage *thumbnailArtworkImage;
 @property (nonatomic, readonly, getter=isCompilation) BOOL compilation;
 - (void)setArtworkWithData:(NSData*)data cropped:(BOOL)cropped;

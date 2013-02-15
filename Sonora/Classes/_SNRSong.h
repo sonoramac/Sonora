@@ -69,7 +69,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* bookmark;
+
 
 
 //- (BOOL)validateBookmark:(id*)value_ error:(NSError**)error_;
@@ -77,7 +79,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* compilation;
+
 
 
 @property BOOL compilationValue;
@@ -89,7 +93,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* composer;
+
 
 
 //- (BOOL)validateComposer:(id*)value_ error:(NSError**)error_;
@@ -97,7 +103,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* dateAdded;
+
 
 
 //- (BOOL)validateDateAdded:(id*)value_ error:(NSError**)error_;
@@ -105,7 +113,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* discNumber;
+
 
 
 @property int32_t discNumberValue;
@@ -117,7 +127,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* discTotal;
+
 
 
 @property int32_t discTotalValue;
@@ -129,7 +141,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* duration;
+
 
 
 @property int32_t durationValue;
@@ -141,7 +155,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* iTunesPersistentID;
+
 
 
 //- (BOOL)validateITunesPersistentID:(id*)value_ error:(NSError**)error_;
@@ -149,7 +165,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* lyrics;
+
 
 
 //- (BOOL)validateLyrics:(id*)value_ error:(NSError**)error_;
@@ -157,7 +175,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -165,7 +185,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* popularity;
+
 
 
 @property double popularityValue;
@@ -177,7 +199,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* ranking;
+
 
 
 @property int32_t rankingValue;
@@ -189,7 +213,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* rawAlbumArtist;
+
 
 
 //- (BOOL)validateRawAlbumArtist:(id*)value_ error:(NSError**)error_;
@@ -197,7 +223,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* rawArtist;
+
 
 
 //- (BOOL)validateRawArtist:(id*)value_ error:(NSError**)error_;
@@ -205,7 +233,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* trackNumber;
+
 
 
 @property int32_t trackNumberValue;
@@ -217,7 +247,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* trackTotal;
+
 
 
 @property int32_t trackTotalValue;
@@ -229,7 +261,9 @@ extern const struct SNRSongFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* year;
+
 
 
 @property int32_t yearValue;
@@ -242,28 +276,28 @@ extern const struct SNRSongFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRAlbum* album;
+@property (nonatomic, strong) SNRAlbum *album;
 
 //- (BOOL)validateAlbum:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* mixes;
+@property (nonatomic, strong) NSSet *mixes;
 
 - (NSMutableSet*)mixesSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* playCounts;
+@property (nonatomic, strong) NSSet *playCounts;
 
 - (NSMutableSet*)playCountsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* tags;
+@property (nonatomic, strong) NSSet *tags;
 
 - (NSMutableSet*)tagsSet;
 

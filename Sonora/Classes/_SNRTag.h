@@ -33,7 +33,9 @@ extern const struct SNRTagFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -41,7 +43,9 @@ extern const struct SNRTagFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* ranking;
+
 
 
 @property int32_t rankingValue;
@@ -54,7 +58,7 @@ extern const struct SNRTagFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* songs;
+@property (nonatomic, strong) NSSet *songs;
 
 - (NSMutableSet*)songsSet;
 

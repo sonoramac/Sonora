@@ -45,7 +45,9 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* dateModified;
+
 
 
 //- (BOOL)validateDateModified:(id*)value_ error:(NSError**)error_;
@@ -53,7 +55,9 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* didSearchForArtwork;
+
 
 
 @property BOOL didSearchForArtworkValue;
@@ -65,7 +69,9 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -73,7 +79,9 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* popularity;
+
 
 
 @property double popularityValue;
@@ -85,7 +93,9 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* ranking;
+
 
 
 @property int32_t rankingValue;
@@ -98,28 +108,28 @@ extern const struct SNRAlbumFetchedProperties {
 
 
 
-@property (nonatomic, strong) SNRArtist* artist;
+@property (nonatomic, strong) SNRArtist *artist;
 
 //- (BOOL)validateArtist:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) SNRArtwork* artwork;
+@property (nonatomic, strong) SNRArtwork *artwork;
 
 //- (BOOL)validateArtwork:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* songs;
+@property (nonatomic, strong) NSSet *songs;
 
 - (NSMutableSet*)songsSet;
 
 
 
 
-@property (nonatomic, strong) SNRThumbnailArtwork* thumbnailArtwork;
+@property (nonatomic, strong) SNRThumbnailArtwork *thumbnailArtwork;
 
 //- (BOOL)validateThumbnailArtwork:(id*)value_ error:(NSError**)error_;
 

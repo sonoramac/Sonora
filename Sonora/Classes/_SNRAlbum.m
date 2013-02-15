@@ -44,20 +44,23 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return (SNRAlbumID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"didSearchForArtworkValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"didSearchForArtwork"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"popularityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"popularity"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
