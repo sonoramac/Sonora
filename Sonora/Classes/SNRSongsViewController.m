@@ -110,7 +110,7 @@ static NSString* const kMixCellIdentifier = @"SongMixCell";
     [self.arrayController setManagedObjectContext:SONORA_MANAGED_OBJECT_CONTEXT];
     if ([_container isKindOfClass:[SNRAlbum class]]) {
         [self.arrayController setFetchPredicate:[NSPredicate predicateWithFormat:@"album == %@", _container]];
-        [self.arrayController setFetchSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:kSortDiscNumberKey ascending:YES], [NSSortDescriptor sortDescriptorWithKey:kSortTrackNumberKey ascending:YES], nil]];
+        [self.arrayController setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:kSortDiscNumberKey ascending:YES], [NSSortDescriptor sortDescriptorWithKey:kSortTrackNumberKey ascending:YES], nil]];
         [self.arrayController fetch:nil];
     } else if ([_container isKindOfClass:[SNRMix class]]) {
         SNRMix *mix = (SNRMix*)_container;
