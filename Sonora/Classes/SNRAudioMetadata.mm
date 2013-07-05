@@ -430,7 +430,6 @@
 	picture->SetType(AttachedPicture::Type::FrontCover);
 	picture->SetData((__bridge CFDataRef)frontCoverArtData);
 	_metadata->AttachPicture(picture);
-	delete picture, picture = nullptr;
 }
 
 @end
