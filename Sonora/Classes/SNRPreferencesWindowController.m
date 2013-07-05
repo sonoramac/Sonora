@@ -122,8 +122,8 @@ static NSString* const kImageLastFM = @"lastfm";
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *username = ud.lastFMUsername;
+    [self.lastFMButton setTitle:NSLocalizedString((username != nil) ? @"SignOut" : @"SignIn", nil)];
     if (username) {
-        [self.lastFMButton setTitle:NSLocalizedString((username != nil) ? @"SignOut" : @"SignIn", nil)];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         [style setAlignment:NSCenterTextAlignment];
         NSDictionary *promptAttributes = [NSDictionary dictionaryWithObjectsAndKeys:kPromptTextColor, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, nil];
