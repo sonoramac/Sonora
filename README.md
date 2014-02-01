@@ -3,7 +3,7 @@
 #### Developed by [Indragie Karunaratne](http://indragie.com)
 #### Designed by [Tyler Murphy](http://twitter.com/tylrmurphy)
 
-![Sonora](http://indragie.com/images/sonora.png)
+![Sonora](https://raw.github.com/sonoramac/Sonora/master/screenshot.png)
 
 Sonora (previously sold on the App Store, **now open source**) is a relatively new music player for the mac with a clean, minimal design and some awesome features that greatly enhance your every day music listening experience. Some of the highlights of Sonora include:
 
