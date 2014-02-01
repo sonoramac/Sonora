@@ -67,6 +67,13 @@ The app is very much functional, but there's certainly a lot of bugs to fix. Lar
 
 I could definitely use everyone's help in fixing and improving things.
 
+
+### Looking for Sonora 1.0?
+
+The source code in this repository is for Sonora 2.0. If you're looking for the version of Sonora that used to be sold on the Mac App Store (1.0.x) you can [**download it here**](https://s3-us-west-2.amazonaws.com/sonora-mac/Sonora_1.0.2.zip).
+
+You should delete the preferences file for Sonora 2 from **~/Library/Preferences/com.iktm.Sonora.plist** before running this version because they both use the same bundle identifier.
+
 ### Contributing
 
 One of the reasons we open sourced Sonora is because a music player is difficult for one man to maintain, and the community's help is essential in order to keep Sonora in good shape.
