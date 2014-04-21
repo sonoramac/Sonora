@@ -92,8 +92,12 @@ The PSDs for Sonora's design are being cleaned up right now and will be posted i
 
 ### License
 
-Sonora is licensed under the BSD license. See LICENSE file for more info.
+All of Sonora's assets (everything inside the Resources folder) are Copyright (C) 2014 Tyler Murphy and are **NOT licensed for any commercial or non-commercial use**.
 
-Please, **please** don't just compile Sonora (or take the code and rename the app) and sell it somewhere. ie. Don't be a terrible person. We decided to use a nonrestrictive license because we hate those other licenses as much as everyone else does.
+Sonora's **code** is licensed under the BSD 3-Clause license. See LICENSE file for more info.
 
-We've spent many years and thousands of hours working on Sonora, and the last thing we want to see is someone ripping it and selling it for their own profit with minimal effort on their part. **Just don't do it.**
+In other words:
+
+1. You can use the code in accordance with the BSD 3-Clause license.
+2. You can not use the design assets for any purpose.
+3. You may not redistribute the application in any form, commercial or non-commercial.
