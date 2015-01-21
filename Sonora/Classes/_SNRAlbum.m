@@ -18,9 +18,6 @@ const struct SNRAlbumRelationships SNRAlbumRelationships = {
 	.thumbnailArtwork = @"thumbnailArtwork",
 };
 
-const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
-};
-
 @implementation SNRAlbumID
 @end
 
@@ -44,38 +41,31 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	return (SNRAlbumID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"didSearchForArtworkValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"didSearchForArtwork"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"popularityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"popularity"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic dateModified;
 
-
-
-
-
-
 @dynamic didSearchForArtwork;
-
-
 
 - (BOOL)didSearchForArtworkValue {
 	NSNumber *result = [self didSearchForArtwork];
@@ -95,20 +85,9 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	[self setPrimitiveDidSearchForArtwork:[NSNumber numberWithBool:value_]];
 }
 
-
-
-
-
 @dynamic name;
 
-
-
-
-
-
 @dynamic popularity;
-
-
 
 - (double)popularityValue {
 	NSNumber *result = [self popularity];
@@ -128,13 +107,7 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	[self setPrimitivePopularity:[NSNumber numberWithDouble:value_]];
 }
 
-
-
-
-
 @dynamic ranking;
-
-
 
 - (int32_t)rankingValue {
 	NSNumber *result = [self ranking];
@@ -154,38 +127,22 @@ const struct SNRAlbumFetchedProperties SNRAlbumFetchedProperties = {
 	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic artist;
-
-	
 
 @dynamic artwork;
 
-	
-
 @dynamic songs;
 
-	
 - (NSMutableSet*)songsSet {
 	[self willAccessValueForKey:@"songs"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"songs"];
-  
+
 	[self didAccessValueForKey:@"songs"];
 	return result;
 }
-	
 
 @dynamic thumbnailArtwork;
 
-	
-
-
-
-
-
-
 @end
+

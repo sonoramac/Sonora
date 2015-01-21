@@ -14,14 +14,7 @@ extern const struct SNRArtistRelationships {
 	__unsafe_unretained NSString *albums;
 } SNRArtistRelationships;
 
-extern const struct SNRArtistFetchedProperties {
-} SNRArtistFetchedProperties;
-
 @class SNRAlbum;
-
-
-
-
 
 @interface SNRArtistID : NSManagedObjectID {}
 @end
@@ -30,52 +23,31 @@ extern const struct SNRArtistFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRArtistID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRArtistID* objectID;
 
 @property (nonatomic, strong) NSString* name;
 
-
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) NSNumber* ranking;
 
-
-@property int32_t rankingValue;
+@property (atomic) int32_t rankingValue;
 - (int32_t)rankingValue;
 - (void)setRankingValue:(int32_t)value_;
 
 //- (BOOL)validateRanking:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) NSString* sortingName;
-
 
 //- (BOOL)validateSortingName:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) NSSet* albums;
+@property (nonatomic, strong) NSSet *albums;
 
 - (NSMutableSet*)albumsSet;
 
-
-
-
-
 @end
 
-@interface _SNRArtist (CoreDataGeneratedAccessors)
-
+@interface _SNRArtist (AlbumsCoreDataGeneratedAccessors)
 - (void)addAlbums:(NSSet*)value_;
 - (void)removeAlbums:(NSSet*)value_;
 - (void)addAlbumsObject:(SNRAlbum*)value_;
@@ -85,12 +57,8 @@ extern const struct SNRArtistFetchedProperties {
 
 @interface _SNRArtist (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
-
-
-
 
 - (NSNumber*)primitiveRanking;
 - (void)setPrimitiveRanking:(NSNumber*)value;
@@ -98,18 +66,10 @@ extern const struct SNRArtistFetchedProperties {
 - (int32_t)primitiveRankingValue;
 - (void)setPrimitiveRankingValue:(int32_t)value_;
 
-
-
-
 - (NSString*)primitiveSortingName;
 - (void)setPrimitiveSortingName:(NSString*)value;
 
-
-
-
-
 - (NSMutableSet*)primitiveAlbums;
 - (void)setPrimitiveAlbums:(NSMutableSet*)value;
-
 
 @end

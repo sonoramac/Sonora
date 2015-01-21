@@ -12,12 +12,7 @@ extern const struct SNRArtworkRelationships {
 	__unsafe_unretained NSString *album;
 } SNRArtworkRelationships;
 
-extern const struct SNRArtworkFetchedProperties {
-} SNRArtworkFetchedProperties;
-
 @class SNRAlbum;
-
-
 
 @interface SNRArtworkID : NSManagedObjectID {}
 @end
@@ -26,46 +21,24 @@ extern const struct SNRArtworkFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRArtworkID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRArtworkID* objectID;
 
 @property (nonatomic, strong) NSData* data;
 
-
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) SNRAlbum* album;
+@property (nonatomic, strong) SNRAlbum *album;
 
 //- (BOOL)validateAlbum:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@end
-
-@interface _SNRArtwork (CoreDataGeneratedAccessors)
 
 @end
 
 @interface _SNRArtwork (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSData*)primitiveData;
 - (void)setPrimitiveData:(NSData*)value;
 
-
-
-
-
 - (SNRAlbum*)primitiveAlbum;
 - (void)setPrimitiveAlbum:(SNRAlbum*)value;
-
 
 @end

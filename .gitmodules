@@ -8,4 +8,4 @@
 	ignore = dirty
 [submodule "External/Sparkle"]
 	path = External/Sparkle
-	url = git://github.com/sonoramac/Sparkle.git
+	url = https://github.com/sparkle-project/Sparkle.git

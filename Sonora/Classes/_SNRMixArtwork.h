@@ -13,13 +13,7 @@ extern const struct SNRMixArtworkRelationships {
 	__unsafe_unretained NSString *mix;
 } SNRMixArtworkRelationships;
 
-extern const struct SNRMixArtworkFetchedProperties {
-} SNRMixArtworkFetchedProperties;
-
 @class SNRMix;
-
-
-
 
 @interface SNRMixArtworkID : NSManagedObjectID {}
 @end
@@ -28,54 +22,30 @@ extern const struct SNRMixArtworkFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRMixArtworkID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRMixArtworkID* objectID;
 
 @property (nonatomic, strong) NSData* data;
 
-
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) NSNumber* generated;
 
-
-@property BOOL generatedValue;
+@property (atomic) BOOL generatedValue;
 - (BOOL)generatedValue;
 - (void)setGeneratedValue:(BOOL)value_;
 
 //- (BOOL)validateGenerated:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) SNRMix* mix;
+@property (nonatomic, strong) SNRMix *mix;
 
 //- (BOOL)validateMix:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@end
-
-@interface _SNRMixArtwork (CoreDataGeneratedAccessors)
 
 @end
 
 @interface _SNRMixArtwork (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSData*)primitiveData;
 - (void)setPrimitiveData:(NSData*)value;
-
-
-
 
 - (NSNumber*)primitiveGenerated;
 - (void)setPrimitiveGenerated:(NSNumber*)value;
@@ -83,12 +53,7 @@ extern const struct SNRMixArtworkFetchedProperties {
 - (BOOL)primitiveGeneratedValue;
 - (void)setPrimitiveGeneratedValue:(BOOL)value_;
 
-
-
-
-
 - (SNRMix*)primitiveMix;
 - (void)setPrimitiveMix:(SNRMix*)value;
-
 
 @end

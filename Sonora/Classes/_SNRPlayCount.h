@@ -12,12 +12,7 @@ extern const struct SNRPlayCountRelationships {
 	__unsafe_unretained NSString *song;
 } SNRPlayCountRelationships;
 
-extern const struct SNRPlayCountFetchedProperties {
-} SNRPlayCountFetchedProperties;
-
 @class SNRSong;
-
-
 
 @interface SNRPlayCountID : NSManagedObjectID {}
 @end
@@ -26,46 +21,24 @@ extern const struct SNRPlayCountFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRPlayCountID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRPlayCountID* objectID;
 
 @property (nonatomic, strong) NSDate* date;
 
-
 //- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) SNRSong* song;
+@property (nonatomic, strong) SNRSong *song;
 
 //- (BOOL)validateSong:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@end
-
-@interface _SNRPlayCount (CoreDataGeneratedAccessors)
 
 @end
 
 @interface _SNRPlayCount (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSDate*)primitiveDate;
 - (void)setPrimitiveDate:(NSDate*)value;
 
-
-
-
-
 - (SNRSong*)primitiveSong;
 - (void)setPrimitiveSong:(SNRSong*)value;
-
 
 @end

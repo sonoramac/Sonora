@@ -12,9 +12,6 @@ const struct SNRTagRelationships SNRTagRelationships = {
 	.songs = @"songs",
 };
 
-const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
-};
-
 @implementation SNRTagID
 @end
 
@@ -38,30 +35,21 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 	return (SNRTagID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic name;
 
-
-
-
-
-
 @dynamic ranking;
-
-
 
 - (int32_t)rankingValue {
 	NSNumber *result = [self ranking];
@@ -81,26 +69,16 @@ const struct SNRTagFetchedProperties SNRTagFetchedProperties = {
 	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic songs;
 
-	
 - (NSMutableSet*)songsSet {
 	[self willAccessValueForKey:@"songs"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"songs"];
-  
+
 	[self didAccessValueForKey:@"songs"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+

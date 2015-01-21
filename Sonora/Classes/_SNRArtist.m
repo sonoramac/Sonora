@@ -13,9 +13,6 @@ const struct SNRArtistRelationships SNRArtistRelationships = {
 	.albums = @"albums",
 };
 
-const struct SNRArtistFetchedProperties SNRArtistFetchedProperties = {
-};
-
 @implementation SNRArtistID
 @end
 
@@ -39,30 +36,21 @@ const struct SNRArtistFetchedProperties SNRArtistFetchedProperties = {
 	return (SNRArtistID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic name;
 
-
-
-
-
-
 @dynamic ranking;
-
-
 
 - (int32_t)rankingValue {
 	NSNumber *result = [self ranking];
@@ -82,33 +70,18 @@ const struct SNRArtistFetchedProperties SNRArtistFetchedProperties = {
 	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic sortingName;
-
-
-
-
-
 
 @dynamic albums;
 
-	
 - (NSMutableSet*)albumsSet {
 	[self willAccessValueForKey:@"albums"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"albums"];
-  
+
 	[self didAccessValueForKey:@"albums"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+

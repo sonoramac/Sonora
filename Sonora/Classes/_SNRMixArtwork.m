@@ -12,9 +12,6 @@ const struct SNRMixArtworkRelationships SNRMixArtworkRelationships = {
 	.mix = @"mix",
 };
 
-const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
-};
-
 @implementation SNRMixArtworkID
 @end
 
@@ -38,30 +35,21 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 	return (SNRMixArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"generatedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"generated"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic data;
 
-
-
-
-
-
 @dynamic generated;
-
-
 
 - (BOOL)generatedValue {
 	NSNumber *result = [self generated];
@@ -81,17 +69,7 @@ const struct SNRMixArtworkFetchedProperties SNRMixArtworkFetchedProperties = {
 	[self setPrimitiveGenerated:[NSNumber numberWithBool:value_]];
 }
 
-
-
-
-
 @dynamic mix;
 
-	
-
-
-
-
-
-
 @end
+

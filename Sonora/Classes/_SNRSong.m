@@ -30,9 +30,6 @@ const struct SNRSongRelationships SNRSongRelationships = {
 	.tags = @"tags",
 };
 
-const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
-};
-
 @implementation SNRSongID
 @end
 
@@ -56,62 +53,61 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	return (SNRSongID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"compilationValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"compilation"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"discNumberValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"discNumber"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"discTotalValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"discTotal"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"durationValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"popularityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"popularity"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"rankingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"ranking"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"trackNumberValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"trackNumber"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"trackTotalValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"trackTotal"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"yearValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"year"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic bookmark;
 
-
-
-
-
-
 @dynamic compilation;
-
-
 
 - (BOOL)compilationValue {
 	NSNumber *result = [self compilation];
@@ -131,27 +127,11 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveCompilation:[NSNumber numberWithBool:value_]];
 }
 
-
-
-
-
 @dynamic composer;
-
-
-
-
-
 
 @dynamic dateAdded;
 
-
-
-
-
-
 @dynamic discNumber;
-
-
 
 - (int32_t)discNumberValue {
 	NSNumber *result = [self discNumber];
@@ -171,13 +151,7 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveDiscNumber:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic discTotal;
-
-
 
 - (int32_t)discTotalValue {
 	NSNumber *result = [self discTotal];
@@ -197,13 +171,7 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveDiscTotal:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic duration;
-
-
 
 - (int32_t)durationValue {
 	NSNumber *result = [self duration];
@@ -223,34 +191,13 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveDuration:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic iTunesPersistentID;
-
-
-
-
-
 
 @dynamic lyrics;
 
-
-
-
-
-
 @dynamic name;
 
-
-
-
-
-
 @dynamic popularity;
-
-
 
 - (double)popularityValue {
 	NSNumber *result = [self popularity];
@@ -270,13 +217,7 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitivePopularity:[NSNumber numberWithDouble:value_]];
 }
 
-
-
-
-
 @dynamic ranking;
-
-
 
 - (int32_t)rankingValue {
 	NSNumber *result = [self ranking];
@@ -296,27 +237,11 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveRanking:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic rawAlbumArtist;
-
-
-
-
-
 
 @dynamic rawArtist;
 
-
-
-
-
-
 @dynamic trackNumber;
-
-
 
 - (int32_t)trackNumberValue {
 	NSNumber *result = [self trackNumber];
@@ -336,13 +261,7 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveTrackNumber:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic trackTotal;
-
-
 
 - (int32_t)trackTotalValue {
 	NSNumber *result = [self trackTotal];
@@ -362,13 +281,7 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveTrackTotal:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic year;
-
-
 
 - (int32_t)yearValue {
 	NSNumber *result = [self year];
@@ -388,56 +301,40 @@ const struct SNRSongFetchedProperties SNRSongFetchedProperties = {
 	[self setPrimitiveYear:[NSNumber numberWithInt:value_]];
 }
 
-
-
-
-
 @dynamic album;
-
-	
 
 @dynamic mixes;
 
-	
 - (NSMutableSet*)mixesSet {
 	[self willAccessValueForKey:@"mixes"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"mixes"];
-  
+
 	[self didAccessValueForKey:@"mixes"];
 	return result;
 }
-	
 
 @dynamic playCounts;
 
-	
 - (NSMutableSet*)playCountsSet {
 	[self willAccessValueForKey:@"playCounts"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"playCounts"];
-  
+
 	[self didAccessValueForKey:@"playCounts"];
 	return result;
 }
-	
 
 @dynamic tags;
 
-	
 - (NSMutableSet*)tagsSet {
 	[self willAccessValueForKey:@"tags"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tags"];
-  
+
 	[self didAccessValueForKey:@"tags"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+
