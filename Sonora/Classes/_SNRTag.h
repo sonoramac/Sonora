@@ -13,13 +13,7 @@ extern const struct SNRTagRelationships {
 	__unsafe_unretained NSString *songs;
 } SNRTagRelationships;
 
-extern const struct SNRTagFetchedProperties {
-} SNRTagFetchedProperties;
-
 @class SNRSong;
-
-
-
 
 @interface SNRTagID : NSManagedObjectID {}
 @end
@@ -28,44 +22,27 @@ extern const struct SNRTagFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRTagID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRTagID* objectID;
 
 @property (nonatomic, strong) NSString* name;
 
-
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) NSNumber* ranking;
 
-
-@property int32_t rankingValue;
+@property (atomic) int32_t rankingValue;
 - (int32_t)rankingValue;
 - (void)setRankingValue:(int32_t)value_;
 
 //- (BOOL)validateRanking:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) NSSet* songs;
+@property (nonatomic, strong) NSSet *songs;
 
 - (NSMutableSet*)songsSet;
 
-
-
-
-
 @end
 
-@interface _SNRTag (CoreDataGeneratedAccessors)
-
+@interface _SNRTag (SongsCoreDataGeneratedAccessors)
 - (void)addSongs:(NSSet*)value_;
 - (void)removeSongs:(NSSet*)value_;
 - (void)addSongsObject:(SNRSong*)value_;
@@ -75,12 +52,8 @@ extern const struct SNRTagFetchedProperties {
 
 @interface _SNRTag (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
-
-
-
 
 - (NSNumber*)primitiveRanking;
 - (void)setPrimitiveRanking:(NSNumber*)value;
@@ -88,12 +61,7 @@ extern const struct SNRTagFetchedProperties {
 - (int32_t)primitiveRankingValue;
 - (void)setPrimitiveRankingValue:(int32_t)value_;
 
-
-
-
-
 - (NSMutableSet*)primitiveSongs;
 - (void)setPrimitiveSongs:(NSMutableSet*)value;
-
 
 @end

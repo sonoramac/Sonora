@@ -11,9 +11,6 @@ const struct SNRPlayCountRelationships SNRPlayCountRelationships = {
 	.song = @"song",
 };
 
-const struct SNRPlayCountFetchedProperties SNRPlayCountFetchedProperties = {
-};
-
 @implementation SNRPlayCountID
 @end
 
@@ -37,30 +34,15 @@ const struct SNRPlayCountFetchedProperties SNRPlayCountFetchedProperties = {
 	return (SNRPlayCountID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic date;
-
-
-
-
-
 
 @dynamic song;
 
-	
-
-
-
-
-
-
 @end
+

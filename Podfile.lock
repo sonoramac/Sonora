@@ -1,0 +1,39 @@
+PODS:
+  - AFNetworking (1.0RC2)
+  - DBPrefsWindowController (1.0.0)
+  - HIDRemoteSDK (1.2)
+  - INAppStoreWindow (1.4)
+  - INKeychainAccess (1.0)
+  - MASShortcut (1.0.0)
+  - OEGridView (1.0.0):
+    - OEGridView/Core (= 1.0.0)
+    - OEGridView/NSColorAdditions (= 1.0.0)
+  - OEGridView/Core (1.0.0)
+  - OEGridView/NSColorAdditions (1.0.0)
+  - SPMediaKeyTap (1.0.0):
+    - SPMediaKeyTap/InvocationGrabbing (= 1.0.0)
+    - SPMediaKeyTap/SPMediaKeyTapBase (= 1.0.0)
+  - SPMediaKeyTap/InvocationGrabbing (1.0.0)
+  - SPMediaKeyTap/SPMediaKeyTapBase (1.0.0)
+
+DEPENDENCIES:
+  - AFNetworking (= 1.0RC2)
+  - DBPrefsWindowController
+  - HIDRemoteSDK
+  - INAppStoreWindow
+  - INKeychainAccess
+  - MASShortcut
+  - OEGridView
+  - SPMediaKeyTap
+
+SPEC CHECKSUMS:
+  AFNetworking: 68f2951fcecba1b881cf75f67201854358f6cf7f
+  DBPrefsWindowController: 49a41d50bdc30ae8171bceaedb25ba5721027b67
+  HIDRemoteSDK: e5dde2a4fdd01ec0193430618dd2a03110e8a27b
+  INAppStoreWindow: 570e4a9768aaac643ef2129d9b018aca2e0157b3
+  INKeychainAccess: 9663e2ab85cc26cc3d4b0f75f83b2d56377397e3
+  MASShortcut: 230d193e57f8732b2dcdb6fa809edb137d53c95d
+  OEGridView: a68e7c99ea668d9ff801caa896a7717fcead6cc6
+  SPMediaKeyTap: 1bf206280cc232eb3c74c51d6315cdfa1976bd14
+
+COCOAPODS: 0.35.0

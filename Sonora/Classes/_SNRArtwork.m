@@ -11,9 +11,6 @@ const struct SNRArtworkRelationships SNRArtworkRelationships = {
 	.album = @"album",
 };
 
-const struct SNRArtworkFetchedProperties SNRArtworkFetchedProperties = {
-};
-
 @implementation SNRArtworkID
 @end
 
@@ -37,30 +34,15 @@ const struct SNRArtworkFetchedProperties SNRArtworkFetchedProperties = {
 	return (SNRArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic data;
-
-
-
-
-
 
 @dynamic album;
 
-	
-
-
-
-
-
-
 @end
+

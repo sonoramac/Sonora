@@ -13,13 +13,7 @@ extern const struct SNRMixThumbnailArtworkRelationships {
 	__unsafe_unretained NSString *mix;
 } SNRMixThumbnailArtworkRelationships;
 
-extern const struct SNRMixThumbnailArtworkFetchedProperties {
-} SNRMixThumbnailArtworkFetchedProperties;
-
 @class SNRMix;
-
-
-
 
 @interface SNRMixThumbnailArtworkID : NSManagedObjectID {}
 @end
@@ -28,54 +22,30 @@ extern const struct SNRMixThumbnailArtworkFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRMixThumbnailArtworkID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRMixThumbnailArtworkID* objectID;
 
 @property (nonatomic, strong) NSData* data;
 
-
 //- (BOOL)validateData:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) NSNumber* generated;
 
-
-@property BOOL generatedValue;
+@property (atomic) BOOL generatedValue;
 - (BOOL)generatedValue;
 - (void)setGeneratedValue:(BOOL)value_;
 
 //- (BOOL)validateGenerated:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) SNRMix* mix;
+@property (nonatomic, strong) SNRMix *mix;
 
 //- (BOOL)validateMix:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@end
-
-@interface _SNRMixThumbnailArtwork (CoreDataGeneratedAccessors)
 
 @end
 
 @interface _SNRMixThumbnailArtwork (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSData*)primitiveData;
 - (void)setPrimitiveData:(NSData*)value;
-
-
-
 
 - (NSNumber*)primitiveGenerated;
 - (void)setPrimitiveGenerated:(NSNumber*)value;
@@ -83,12 +53,7 @@ extern const struct SNRMixThumbnailArtworkFetchedProperties {
 - (BOOL)primitiveGeneratedValue;
 - (void)setPrimitiveGeneratedValue:(BOOL)value_;
 
-
-
-
-
 - (SNRMix*)primitiveMix;
 - (void)setPrimitiveMix:(SNRMix*)value;
-
 
 @end

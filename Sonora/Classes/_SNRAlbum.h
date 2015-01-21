@@ -19,19 +19,10 @@ extern const struct SNRAlbumRelationships {
 	__unsafe_unretained NSString *thumbnailArtwork;
 } SNRAlbumRelationships;
 
-extern const struct SNRAlbumFetchedProperties {
-} SNRAlbumFetchedProperties;
-
 @class SNRArtist;
 @class SNRArtwork;
 @class SNRSong;
 @class SNRThumbnailArtwork;
-
-
-
-
-
-
 
 @interface SNRAlbumID : NSManagedObjectID {}
 @end
@@ -40,97 +31,59 @@ extern const struct SNRAlbumFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (SNRAlbumID*)objectID;
-
-
-
+@property (nonatomic, readonly, strong) SNRAlbumID* objectID;
 
 @property (nonatomic, strong) NSDate* dateModified;
 
-
 //- (BOOL)validateDateModified:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) NSNumber* didSearchForArtwork;
 
-
-@property BOOL didSearchForArtworkValue;
+@property (atomic) BOOL didSearchForArtworkValue;
 - (BOOL)didSearchForArtworkValue;
 - (void)setDidSearchForArtworkValue:(BOOL)value_;
 
 //- (BOOL)validateDidSearchForArtwork:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) NSString* name;
-
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) NSNumber* popularity;
 
-
-@property double popularityValue;
+@property (atomic) double popularityValue;
 - (double)popularityValue;
 - (void)setPopularityValue:(double)value_;
 
 //- (BOOL)validatePopularity:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) NSNumber* ranking;
 
-
-@property int32_t rankingValue;
+@property (atomic) int32_t rankingValue;
 - (int32_t)rankingValue;
 - (void)setRankingValue:(int32_t)value_;
 
 //- (BOOL)validateRanking:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) SNRArtist* artist;
+@property (nonatomic, strong) SNRArtist *artist;
 
 //- (BOOL)validateArtist:(id*)value_ error:(NSError**)error_;
 
-
-
-
-@property (nonatomic, strong) SNRArtwork* artwork;
+@property (nonatomic, strong) SNRArtwork *artwork;
 
 //- (BOOL)validateArtwork:(id*)value_ error:(NSError**)error_;
 
-
-
-
-@property (nonatomic, strong) NSSet* songs;
+@property (nonatomic, strong) NSSet *songs;
 
 - (NSMutableSet*)songsSet;
 
-
-
-
-@property (nonatomic, strong) SNRThumbnailArtwork* thumbnailArtwork;
+@property (nonatomic, strong) SNRThumbnailArtwork *thumbnailArtwork;
 
 //- (BOOL)validateThumbnailArtwork:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @end
 
-@interface _SNRAlbum (CoreDataGeneratedAccessors)
-
+@interface _SNRAlbum (SongsCoreDataGeneratedAccessors)
 - (void)addSongs:(NSSet*)value_;
 - (void)removeSongs:(NSSet*)value_;
 - (void)addSongsObject:(SNRSong*)value_;
@@ -140,12 +93,8 @@ extern const struct SNRAlbumFetchedProperties {
 
 @interface _SNRAlbum (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSDate*)primitiveDateModified;
 - (void)setPrimitiveDateModified:(NSDate*)value;
-
-
-
 
 - (NSNumber*)primitiveDidSearchForArtwork;
 - (void)setPrimitiveDidSearchForArtwork:(NSNumber*)value;
@@ -153,14 +102,8 @@ extern const struct SNRAlbumFetchedProperties {
 - (BOOL)primitiveDidSearchForArtworkValue;
 - (void)setPrimitiveDidSearchForArtworkValue:(BOOL)value_;
 
-
-
-
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
-
-
-
 
 - (NSNumber*)primitivePopularity;
 - (void)setPrimitivePopularity:(NSNumber*)value;
@@ -168,36 +111,22 @@ extern const struct SNRAlbumFetchedProperties {
 - (double)primitivePopularityValue;
 - (void)setPrimitivePopularityValue:(double)value_;
 
-
-
-
 - (NSNumber*)primitiveRanking;
 - (void)setPrimitiveRanking:(NSNumber*)value;
 
 - (int32_t)primitiveRankingValue;
 - (void)setPrimitiveRankingValue:(int32_t)value_;
 
-
-
-
-
 - (SNRArtist*)primitiveArtist;
 - (void)setPrimitiveArtist:(SNRArtist*)value;
-
-
 
 - (SNRArtwork*)primitiveArtwork;
 - (void)setPrimitiveArtwork:(SNRArtwork*)value;
 
-
-
 - (NSMutableSet*)primitiveSongs;
 - (void)setPrimitiveSongs:(NSMutableSet*)value;
 
-
-
 - (SNRThumbnailArtwork*)primitiveThumbnailArtwork;
 - (void)setPrimitiveThumbnailArtwork:(SNRThumbnailArtwork*)value;
-
 
 @end

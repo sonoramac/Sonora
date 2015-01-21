@@ -11,9 +11,6 @@ const struct SNRThumbnailArtworkRelationships SNRThumbnailArtworkRelationships =
 	.album = @"album",
 };
 
-const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProperties = {
-};
-
 @implementation SNRThumbnailArtworkID
 @end
 
@@ -37,30 +34,15 @@ const struct SNRThumbnailArtworkFetchedProperties SNRThumbnailArtworkFetchedProp
 	return (SNRThumbnailArtworkID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic data;
-
-
-
-
-
 
 @dynamic album;
 
-	
-
-
-
-
-
-
 @end
+
