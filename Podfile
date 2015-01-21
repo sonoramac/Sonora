@@ -3,7 +3,7 @@ source 'https://github.com/cocoapods/specs.git'
 
 platform :osx, '10.7'
 
-pod 'MASShortcut'
+pod 'MASShortcut', '1.3.1'
 pod 'DBPrefsWindowController'
 pod 'SPMediaKeyTap'
 pod 'INAppStoreWindow'
