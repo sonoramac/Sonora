@@ -31,8 +31,10 @@
 #import <SFBAudioEngine/AudioMetadata.h>
 #import <SFBAudioEngine/AttachedPicture.h>
 
+using namespace SFB;
+
 @implementation SNRAudioMetadata  {
-    AudioMetadata *_metadata;
+    Audio::Metadata::unique_ptr _metadata;
 }
 
 #pragma mark -
@@ -41,7 +43,7 @@
 - (id)initWithFileAtURL:(NSURL*)url
 {
     if ((self = [super init])) {
-        _metadata = AudioMetadata::CreateMetadataForURL((__bridge CFURLRef)url);
+        _metadata = Audio::Metadata::CreateMetadataForURL((__bridge CFURLRef)url);
         if (_metadata == NULL) {
             return nil;
         }
@@ -51,7 +53,6 @@
 
 - (void)dealloc
 {
-    delete _metadata;
     _metadata = NULL;
 }
 
@@ -60,22 +61,22 @@
 
 + (NSArray*)supportedFileExtensions
 {
-    return (__bridge NSArray*)AudioMetadata::CreateSupportedFileExtensions();
+    return (__bridge NSArray*)Audio::Metadata::CreateSupportedFileExtensions();
 }
 
 + (NSArray*)supportedMIMETypes
 {
-    return (__bridge NSArray*)AudioMetadata::CreateSupportedMIMETypes();
+    return (__bridge NSArray*)Audio::Metadata::CreateSupportedMIMETypes();
 }
 
 + (BOOL)handlesFilesWithExtension:(NSString*)extension
 {
-    return (BOOL)AudioMetadata::HandlesFilesWithExtension((__bridge CFStringRef)extension);
+    return (BOOL)Audio::Metadata::HandlesFilesWithExtension((__bridge CFStringRef)extension);
 }
 
 + (BOOL)handlesMIMEType:(NSString*)mimeType
 {
-    return (BOOL)AudioMetadata::HandlesMIMEType((__bridge CFStringRef)mimeType);
+    return (BOOL)Audio::Metadata::HandlesMIMEType((__bridge CFStringRef)mimeType);
 }
 
 + (NSArray*)supportedUTIs
@@ -409,14 +410,14 @@
 
 - (NSData*)frontCoverArtData
 {
-	std::vector<AttachedPicture *> front = _metadata->GetAttachedPicturesOfType(AttachedPicture::Type::FrontCover);
+    std::vector<std::shared_ptr<Audio::AttachedPicture>> front = _metadata->GetAttachedPicturesOfType(Audio::AttachedPicture::Type::FrontCover);
 	if (front.size()) {
-		AttachedPicture *frontArt = front.at(0);
+        auto frontArt = front.at(0);
 		return (__bridge NSData*)frontArt->GetData();
 	} else {
-		std::vector<AttachedPicture *> all = _metadata->GetAttachedPictures();
+		std::vector<std::shared_ptr<Audio::AttachedPicture>> all = _metadata->GetAttachedPictures();
 		if (all.size()) {
-			AttachedPicture *art = all.at(0);
+            auto art = all.at(0);
 			return (__bridge NSData*)art->GetData();
 		}
 	}
@@ -425,9 +426,9 @@
 
 - (void)setFrontCoverArtData:(NSData *)frontCoverArtData
 {
-	_metadata->RemoveAttachedPicturesOfType(AttachedPicture::Type::FrontCover);
-	AttachedPicture *picture = new AttachedPicture;
-	picture->SetType(AttachedPicture::Type::FrontCover);
+    _metadata->RemoveAttachedPicturesOfType(Audio::AttachedPicture::Type::FrontCover);
+    auto picture = std::make_shared<Audio::AttachedPicture>();
+    picture->SetType(Audio::AttachedPicture::Type::FrontCover);
 	picture->SetData((__bridge CFDataRef)frontCoverArtData);
 	_metadata->AttachPicture(picture);
 }

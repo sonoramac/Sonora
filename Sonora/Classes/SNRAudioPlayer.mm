@@ -30,6 +30,7 @@
 
 #import "SNRAudioPlayer.h"
 #import <SFBAudioEngine/AudioPlayer.h>
+#import <SFBAudioEngine/CoreAudioOutput.h>
 #import <SFBAudioEngine/AudioDecoder.h>
 #import <SFBAudioEngine/InputSource.h>
 #import <AudioUnit/AudioUnit.h>
@@ -60,28 +61,10 @@ static AudioObjectPropertyAddress sOutputAudioAddress = {
     kAudioObjectPropertyElementMaster
 };
 
+using namespace SFB;
+
 #pragma mark -
 #pragma mark Callbacks
-
-static void renderingStarted(void *context, const AudioDecoder *decoder)
-{
-	OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
-}
-
-static void renderingFinished(void *context, const AudioDecoder *decoder)
-{
-	OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
-}
-
-static void decodingStarted(void *context, const AudioDecoder *decoder)
-{
-    OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
-}
-
-static void decodingFinished(void *context, const AudioDecoder *decoder)
-{
-    OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
-}
 
 static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void* refcon)
 {
@@ -96,7 +79,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 }
 
 @implementation SNRAudioPlayer  {
-    AudioPlayer *_player;
+    Audio::Player *_player;
     NSTimer *_renderTimer;
     AudioUnit _equalizer;
 }
@@ -108,11 +91,11 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (id)init
 {
     if ((self = [super init])) {
-        _player = new AudioPlayer;
-        _player->AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
+        _player = new Audio::Player;
+        dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
         AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
-        AudioDecoder::SetAutomaticallyOpenDecoders(true);
+        Audio::Decoder::SetAutomaticallyOpenDecoders(true);
         self.volume = 1.0;
         _renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(renderTimerFired:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
@@ -138,7 +121,7 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)setOutputDeviceID:(AudioDeviceID)deviceID
 {
-    _player->SetOutputDeviceID(deviceID);
+    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetDeviceID(deviceID);
 }
 
 - (void)renderTimerFired:(NSTimer*)timer
@@ -228,28 +211,28 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (float)volume
 {
     Float32 volume = 0.0;
-    _player->GetVolume(volume);
+    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetVolume(volume);
     return (float)volume;
 }
         
 - (void)setVolume:(float)volume
 {
     [self willChangeValueForKey:@"volume"];
-    _player->SetVolume(volume);
+    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetVolume(volume);
     [self didChangeValueForKey:@"volume"];
 }
 
 - (float)preGain
 {
     Float32 preGain = 0.0;
-    _player->GetPreGain(preGain);
+    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetPreGain(preGain);
     return (float)preGain;
 }
 
 - (void)setPreGain:(float)preGain
 {
     [self willChangeValueForKey:@"preGain"];
-    _player->SetPreGain(preGain);
+    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetPreGain(preGain);
     [self didChangeValueForKey:@"preGain"];
 }
 
@@ -301,21 +284,31 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 - (BOOL)enqueueURL:(NSURL*)url
 {
     BOOL useMemoryInputSource = [[NSUserDefaults standardUserDefaults] useMemoryInputSource];
-    InputSource *inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, useMemoryInputSource ? InputSourceFlagLoadFilesInMemory : 0, nullptr);
+    auto inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, useMemoryInputSource ? InputSource::LoadFilesInMemory : 0, nullptr);
     if (inputSource == nullptr) {
         return NO;
     }
-	AudioDecoder *decoder = AudioDecoder::CreateDecoderForInputSource(inputSource);
-	if (decoder == nullptr) { 
-        delete inputSource, inputSource = nullptr;
+    auto decoder = Audio::Decoder::CreateForInputSource(std::move(inputSource));
+	if (decoder == nullptr) {
+        inputSource = nullptr;
         return NO;
     }
-	decoder->SetRenderingStartedCallback(renderingStarted, (__bridge void*)self);
-	decoder->SetRenderingFinishedCallback(renderingFinished, (__bridge void*)self);
-    decoder->SetDecodingStartedCallback(decodingStarted, (__bridge void*)self);
-    decoder->SetDecodingFinishedCallback(decodingFinished, (__bridge void*)self);
+    
+    _player->SetRenderingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+        OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
+    });
+    _player->SetRenderingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+        OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
+    });
+    _player->SetDecodingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+        OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
+    });
+    _player->SetDecodingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+        OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
+    });
+    
 	if ((_player->Enqueue(decoder)) == false) {
-		delete decoder, decoder = nullptr;
+        decoder = nullptr;
         return NO;
 	}
     return YES;
