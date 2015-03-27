@@ -156,8 +156,8 @@
 		}
 	}
 	if ([[NSUserDefaults standardUserDefaults] growlNewImport] && [objectIDs count]) {
-		NSString *title = [NSString stringWithFormat:NSLocalizedString(@"GrowlImportediTunesTracksTitle", nil), operation.files.count];
-		NSString *description = [NSString stringWithFormat:NSLocalizedString(@"GrowlImportedTracksDescription", nil), operation.files.count];
+		NSString *title = [NSString stringWithFormat:NSLocalizedString(@"GrowlImportediTunesTracksTitle", nil), objectIDs.count];
+		NSString *description = [NSString stringWithFormat:NSLocalizedString(@"GrowlImportedTracksDescription", nil), objectIDs.count];
 		[GrowlApplicationBridge notifyWithTitle:title description:description notificationName:kGrowlNotificationImportediTunesTracks iconData:nil priority:0 isSticky:NO clickContext:@""];
 	}
     [self setProgressBarVisible:NO];

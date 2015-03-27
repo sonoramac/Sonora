@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		03042EBC15ED4DC6002C4CA2 /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
-		03042EBD15ED4DD1002C4CA2 /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
 		0305D67114D87ECD001FFF15 /* SNRMetadataTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305D67014D87ECD001FFF15 /* SNRMetadataTextFieldCell.m */; };
 		0305D67414D8B2CB001FFF15 /* SNRClickActionTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305D67314D8B2CB001FFF15 /* SNRClickActionTextField.m */; };
 		03071D1414EE153E009478D8 /* NSDate+SNRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03071D1314EE153E009478D8 /* NSDate+SNRAdditions.m */; };
@@ -284,17 +282,12 @@
 		03F9AD8B1411AAB7006E2873 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 03F9AD8A1411AAB7006E2873 /* icon.icns */; };
 		03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
 		03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03FDF85B15E32D4E009A54B8 /* Sparkle.framework */; };
+		1478CC181ABB8B7F00B2CF0F /* SFBAudioEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03042EB715ED4DB1002C4CA2 /* SFBAudioEngine.framework */; };
+		14A3E3B21ABB8E65005834ED /* SFBAudioEngine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1478CC0F1ABB8B5C00B2CF0F /* SFBAudioEngine.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		86F6993C5FE244739816BDB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10314D7A429A4257993EE387 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03042EB215ED4DB1002C4CA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 32C212D51091116D00BA2493;
-			remoteInfo = SFBAudioEngine.framework;
-		};
 		03042EB415ED4DB1002C4CA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
@@ -308,13 +301,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 32AEB2701409AC30001F9A60;
 			remoteInfo = SFBAudioEngine;
-		};
-		03042EB815ED4DB1002C4CA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 32AEB3041409BE48001F9A60;
-			remoteInfo = "SimplePlayer-iOS";
 		};
 		03042EBA15ED4DBF002C4CA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -386,6 +372,13 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = Sparkle;
 		};
+		1478CC0E1ABB8B5C00B2CF0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03042EA615ED4DB1002C4CA2 /* SFBAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32A9BC7E1955FBE000BD33FF;
+			remoteInfo = "SFBAudioEngine-ASIO";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -395,7 +388,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03042EBD15ED4DD1002C4CA2 /* SFBAudioEngine.framework in CopyFiles */,
+				14A3E3B21ABB8E65005834ED /* SFBAudioEngine.framework in CopyFiles */,
 				03FDF86915E32D94009A54B8 /* Sparkle.framework in CopyFiles */,
 				038E796215D83E6F008613DB /* Growl.framework in CopyFiles */,
 				0347F30C14DCC83400E8E5FC /* SNRHUDKit.framework in CopyFiles */,
@@ -826,7 +819,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03042EBC15ED4DC6002C4CA2 /* SFBAudioEngine.framework in Frameworks */,
+				1478CC181ABB8B7F00B2CF0F /* SFBAudioEngine.framework in Frameworks */,
 				03FDF86815E32D8B009A54B8 /* Sparkle.framework in Frameworks */,
 				038E793015D83950008613DB /* libcrypto.dylib in Frameworks */,
 				038E792E15D8390F008613DB /* Security.framework in Frameworks */,
@@ -849,10 +842,9 @@
 		03042EA715ED4DB1002C4CA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */,
+				03042EB715ED4DB1002C4CA2 /* SFBAudioEngine.framework */,
+				1478CC0F1ABB8B5C00B2CF0F /* SFBAudioEngine.framework */,
 				03042EB515ED4DB1002C4CA2 /* SimplePlayer.app */,
-				03042EB715ED4DB1002C4CA2 /* libSFBAudioEngine.a */,
-				03042EB915ED4DB1002C4CA2 /* SimplePlayer-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1822,13 +1814,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		03042EB315ED4DB1002C4CA2 /* SFBAudioEngine.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SFBAudioEngine.framework;
-			remoteRef = 03042EB215ED4DB1002C4CA2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		03042EB515ED4DB1002C4CA2 /* SimplePlayer.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -1836,18 +1821,11 @@
 			remoteRef = 03042EB415ED4DB1002C4CA2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		03042EB715ED4DB1002C4CA2 /* libSFBAudioEngine.a */ = {
+		03042EB715ED4DB1002C4CA2 /* SFBAudioEngine.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSFBAudioEngine.a;
+			fileType = wrapper.framework;
+			path = SFBAudioEngine.framework;
 			remoteRef = 03042EB615ED4DB1002C4CA2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03042EB915ED4DB1002C4CA2 /* SimplePlayer-iOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SimplePlayer-iOS.app";
-			remoteRef = 03042EB815ED4DB1002C4CA2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0347F30714DCC82600E8E5FC /* SNRHUDKit.framework */ = {
@@ -1897,6 +1875,13 @@
 			fileType = wrapper.application;
 			path = Autoupdate.app;
 			remoteRef = 03FDF86215E32D4E009A54B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1478CC0F1ABB8B5C00B2CF0F /* SFBAudioEngine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SFBAudioEngine.framework;
+			remoteRef = 1478CC0E1ABB8B5C00B2CF0F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2349,6 +2334,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2378,6 +2365,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2402,7 +2391,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ARC_MIGRATION = donothing;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
@@ -2448,7 +2437,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ARC_MIGRATION = donothing;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
