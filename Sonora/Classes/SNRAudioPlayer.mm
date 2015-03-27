@@ -49,16 +49,16 @@
 enum {
 	ePlayerFlagRenderingStarted			= 1 << 0,
 	ePlayerFlagRenderingFinished		= 1 << 1,
-    ePlayerFlagDecodingStarted          = 1 << 2,
-    ePlayerFlagDecodingFinished         = 1 << 3
+	ePlayerFlagDecodingStarted          = 1 << 2,
+	ePlayerFlagDecodingFinished         = 1 << 3
 };
 
 volatile static uint32_t _playerFlags = 0;
 
 static AudioObjectPropertyAddress sOutputAudioAddress = {
-    kAudioHardwarePropertyDefaultSystemOutputDevice,
-    kAudioObjectPropertyScopeGlobal,
-    kAudioObjectPropertyElementMaster
+	kAudioHardwarePropertyDefaultSystemOutputDevice,
+	kAudioObjectPropertyScopeGlobal,
+	kAudioObjectPropertyElementMaster
 };
 
 using namespace SFB;
@@ -68,20 +68,20 @@ using namespace SFB;
 
 static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void* refcon)
 {
-    AudioDeviceID currentDevice;
-    UInt32 propsize = sizeof(AudioDeviceID);
-    OSStatus err = AudioObjectGetPropertyData(kAudioObjectSystemObject, &sOutputAudioAddress, 0, NULL, &propsize, &currentDevice);
-    if (err == noErr) {
-        SNRAudioPlayer *player = (__bridge SNRAudioPlayer*)refcon;
-        [player setOutputDeviceID:currentDevice];
-    }
-    return err;
+	AudioDeviceID currentDevice;
+	UInt32 propsize = sizeof(AudioDeviceID);
+	OSStatus err = AudioObjectGetPropertyData(kAudioObjectSystemObject, &sOutputAudioAddress, 0, NULL, &propsize, &currentDevice);
+	if (err == noErr) {
+		SNRAudioPlayer *player = (__bridge SNRAudioPlayer*)refcon;
+		[player setOutputDeviceID:currentDevice];
+	}
+	return err;
 }
 
 @implementation SNRAudioPlayer  {
-    Audio::Player *_player;
-    NSTimer *_renderTimer;
-    AudioUnit _equalizer;
+	Audio::Player *_player;
+	NSTimer *_renderTimer;
+	AudioUnit _equalizer;
 }
 @synthesize delegate = _delegate;
 
@@ -90,17 +90,17 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (id)init
 {
-    if ((self = [super init])) {
-        _player = new Audio::Player;
-        dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
-        AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
-        AudioObjectAddPropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
-        Audio::Decoder::SetAutomaticallyOpenDecoders(true);
-        self.volume = 1.0;
-        _renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(renderTimerFired:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
-    }
-    return self;
+	if ((self = [super init])) {
+		_player = new Audio::Player;
+		dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).AddEffect(kAudioUnitSubType_GraphicEQ, kAudioUnitManufacturer_Apple, 0, 0, &_equalizer);
+		AudioUnitSetParameter(_equalizer, 10000, kAudioUnitScope_Global, 0, 0.0, 0); // 10 band EQ
+		AudioObjectAddPropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
+		Audio::Decoder::SetAutomaticallyOpenDecoders(true);
+		self.volume = 1.0;
+		_renderTimer = [NSTimer timerWithTimeInterval:0.5f target:self selector:@selector(renderTimerFired:) userInfo:nil repeats:YES];
+		[[NSRunLoop mainRunLoop] addTimer:_renderTimer forMode:NSRunLoopCommonModes];
+	}
+	return self;
 }
 
 #pragma mark -
@@ -108,11 +108,11 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)dealloc
 {
-    [_renderTimer invalidate];
-    AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
-    AudioUnitUninitialize(_equalizer);
-    _equalizer = NULL;
-    delete _player; _player = NULL;
+	[_renderTimer invalidate];
+	AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &sOutputAudioAddress, systemOutputDeviceDidChange, (__bridge void*)self);
+	AudioUnitUninitialize(_equalizer);
+	_equalizer = NULL;
+	delete _player; _player = NULL;
 }
 
 
@@ -121,35 +121,35 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (void)setOutputDeviceID:(AudioDeviceID)deviceID
 {
-    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetDeviceID(deviceID);
+	dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetDeviceID(deviceID);
 }
 
 - (void)renderTimerFired:(NSTimer*)timer
 {
-    if (ePlayerFlagRenderingStarted & _playerFlags) {
+	if (ePlayerFlagRenderingStarted & _playerFlags) {
 		OSAtomicTestAndClearBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
 		if ([self.delegate respondsToSelector:@selector(audioPlayerStartedPlaying:)]) {
-            [self.delegate audioPlayerStartedPlaying:self];
-        }
+			[self.delegate audioPlayerStartedPlaying:self];
+		}
 	} else if (ePlayerFlagRenderingFinished & _playerFlags) {
 		OSAtomicTestAndClearBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
 		if ([self.delegate respondsToSelector:@selector(audioPlayerFinishedPlaying:)]) {
-            [self.delegate audioPlayerFinishedPlaying:self];
-        }
+			[self.delegate audioPlayerFinishedPlaying:self];
+		}
 	} else if (ePlayerFlagDecodingStarted & _playerFlags) {
-        OSAtomicTestAndClearBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
-        if ([self.delegate respondsToSelector:@selector(audioPlayerStartedDecoding:)]) {
-            [self.delegate audioPlayerStartedDecoding:self];
-        }
-    } else if (ePlayerFlagDecodingFinished & _playerFlags) {
-        OSAtomicTestAndClearBarrier(4 /* ePlayerFlagDecodingFinished */, &_playerFlags);
-        if ([self.delegate respondsToSelector:@selector(audioPlayerFinishedDecoding:)]) {
-            [self.delegate audioPlayerFinishedDecoding:self];
-        }
-    }
-    if ([self.delegate respondsToSelector:@selector(audioPlayerWantsUIUpdate:)]) {
-        [self.delegate audioPlayerWantsUIUpdate:self];
-    }
+		OSAtomicTestAndClearBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
+		if ([self.delegate respondsToSelector:@selector(audioPlayerStartedDecoding:)]) {
+			[self.delegate audioPlayerStartedDecoding:self];
+		}
+	} else if (ePlayerFlagDecodingFinished & _playerFlags) {
+		OSAtomicTestAndClearBarrier(4 /* ePlayerFlagDecodingFinished */, &_playerFlags);
+		if ([self.delegate respondsToSelector:@selector(audioPlayerFinishedDecoding:)]) {
+			[self.delegate audioPlayerFinishedDecoding:self];
+		}
+	}
+	if ([self.delegate respondsToSelector:@selector(audioPlayerWantsUIUpdate:)]) {
+		[self.delegate audioPlayerWantsUIUpdate:self];
+	}
 }
 
 #pragma mark -
@@ -157,88 +157,88 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (BOOL)isPlaying
 {
-    return (BOOL)_player->IsPlaying();
+	return (BOOL)_player->IsPlaying();
 }
 
 - (BOOL)isPaused
 {
-    return (BOOL)_player->IsPaused();
+	return (BOOL)_player->IsPaused();
 }
 
 - (BOOL)isStopped
 {
-    return (BOOL)_player->IsStopped();
+	return (BOOL)_player->IsStopped();
 }
 
 - (NSURL*)playingURL
 {
-    return (__bridge NSURL*)_player->GetPlayingURL();
+	return (__bridge NSURL*)_player->GetPlayingURL();
 }
 
 - (NSTimeInterval)currentTime
 {
-    CFTimeInterval time = 0.0;
-    _player->GetCurrentTime(time);
-    return (NSTimeInterval)time;
+	CFTimeInterval time = 0.0;
+	_player->GetCurrentTime(time);
+	return (NSTimeInterval)time;
 }
 
 - (NSTimeInterval)totalTime
 {
-    CFTimeInterval time = 0.0;
-    _player->GetTotalTime(time);
-    return (NSTimeInterval)time;
+	CFTimeInterval time = 0.0;
+	_player->GetTotalTime(time);
+	return (NSTimeInterval)time;
 }
 
 - (NSUInteger)currentFrame
 {
-    SInt64 frame = 0;
-    _player->GetCurrentFrame(frame);
-    return (NSUInteger)frame;
+	SInt64 frame = 0;
+	_player->GetCurrentFrame(frame);
+	return (NSUInteger)frame;
 }
 
 - (NSUInteger)totalFrames
 {
-    SInt64 frame = 0;
-    _player->GetTotalFrames(frame);
-    return (NSUInteger)frame;
+	SInt64 frame = 0;
+	_player->GetTotalFrames(frame);
+	return (NSUInteger)frame;
 }
 
 - (BOOL)supportsSeeking
 {
-    return (BOOL)_player->SupportsSeeking();
+	return (BOOL)_player->SupportsSeeking();
 }
 
 - (float)volume
 {
-    Float32 volume = 0.0;
-    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetVolume(volume);
-    return (float)volume;
+	Float32 volume = 0.0;
+	dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetVolume(volume);
+	return (float)volume;
 }
-        
+
 - (void)setVolume:(float)volume
 {
-    [self willChangeValueForKey:@"volume"];
-    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetVolume(volume);
-    [self didChangeValueForKey:@"volume"];
+	[self willChangeValueForKey:@"volume"];
+	dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetVolume(volume);
+	[self didChangeValueForKey:@"volume"];
 }
 
 - (float)preGain
 {
-    Float32 preGain = 0.0;
-    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetPreGain(preGain);
-    return (float)preGain;
+	Float32 preGain = 0.0;
+	dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).GetPreGain(preGain);
+	return (float)preGain;
 }
 
 - (void)setPreGain:(float)preGain
 {
-    [self willChangeValueForKey:@"preGain"];
-    dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetPreGain(preGain);
-    [self didChangeValueForKey:@"preGain"];
+	[self willChangeValueForKey:@"preGain"];
+	dynamic_cast<Audio::CoreAudioOutput&>(_player->GetOutput()).SetPreGain(preGain);
+	[self didChangeValueForKey:@"preGain"];
 }
 
 - (IBAction)play:(id)sender
 {
-    _player->Play();
+	_player->Play();
 }
 
 - (IBAction)playPause:(id)sender
@@ -248,84 +248,84 @@ static OSStatus systemOutputDeviceDidChange(AudioObjectID inObjectID, UInt32 inN
 
 - (IBAction)pause:(id)sender
 {
-    _player->Pause();
+	_player->Pause();
 }
 
 - (IBAction)stop:(id)sender
 {
-    _player->Stop();
+	_player->Stop();
 }
 
 - (IBAction)seekForward:(id)sender
 {
-    _player->SeekForward();
+	_player->SeekForward();
 }
 
 - (IBAction)seekBackward:(id)sender
 {
-    _player->SeekBackward();
+	_player->SeekBackward();
 }
 
 - (void)seekForwardWithSeconds:(NSTimeInterval)seconds
 {
-    _player->SeekForward((CFTimeInterval)seconds);
+	_player->SeekForward((CFTimeInterval)seconds);
 }
 
 - (void)seekBackwardWithSeconds:(NSTimeInterval)seconds
 {
-    _player->SeekBackward((CFTimeInterval)seconds);
+	_player->SeekBackward((CFTimeInterval)seconds);
 }
 
 - (BOOL)seekToTime:(NSTimeInterval)time
 {
-    return (BOOL)_player->SeekToTime((CFTimeInterval)time);
+	return (BOOL)_player->SeekToTime((CFTimeInterval)time);
 }
 
 - (BOOL)enqueueURL:(NSURL*)url
 {
-    BOOL useMemoryInputSource = [[NSUserDefaults standardUserDefaults] useMemoryInputSource];
-    auto inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, useMemoryInputSource ? InputSource::LoadFilesInMemory : 0, nullptr);
-    if (inputSource == nullptr) {
-        return NO;
-    }
-    auto decoder = Audio::Decoder::CreateForInputSource(std::move(inputSource));
-	if (decoder == nullptr) {
-        inputSource = nullptr;
-        return NO;
-    }
-    
-    _player->SetRenderingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
-        OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
-    });
-    _player->SetRenderingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
-        OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
-    });
-    _player->SetDecodingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
-        OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
-    });
-    _player->SetDecodingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
-        OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
-    });
-    
-	if ((_player->Enqueue(decoder)) == false) {
-        decoder = nullptr;
-        return NO;
+	BOOL useMemoryInputSource = [[NSUserDefaults standardUserDefaults] useMemoryInputSource];
+	auto inputSource = InputSource::CreateInputSourceForURL((__bridge CFURLRef)url, useMemoryInputSource ? InputSource::LoadFilesInMemory : 0, nullptr);
+	if (inputSource == nullptr) {
+		return NO;
 	}
-    return YES;
+	auto decoder = Audio::Decoder::CreateForInputSource(std::move(inputSource));
+	if (decoder == nullptr) {
+		inputSource = nullptr;
+		return NO;
+	}
+	
+	_player->SetRenderingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+		OSAtomicTestAndSetBarrier(7 /* ePlayerFlagRenderingStarted */, &_playerFlags);
+	});
+	_player->SetRenderingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+		OSAtomicTestAndSetBarrier(6 /* ePlayerFlagRenderingFinished */, &_playerFlags);
+	});
+	_player->SetDecodingStartedBlock(^(const SFB::Audio::Decoder &decoder) {
+		OSAtomicTestAndSetBarrier(5 /* ePlayerFlagDecodingStarted */, &_playerFlags);
+	});
+	_player->SetDecodingFinishedBlock(^(const SFB::Audio::Decoder &decoder) {
+		OSAtomicTestAndSetBarrier(4 /* ePlayerFlaDecodingFinished */, &_playerFlags);
+	});
+	
+	if ((_player->Enqueue(decoder)) == false) {
+		decoder = nullptr;
+		return NO;
+	}
+	return YES;
 }
 
 - (BOOL)clearEnqueuedTracks
 {
-    return (BOOL)_player->ClearQueuedDecoders();
+	return (BOOL)_player->ClearQueuedDecoders();
 }
 
 - (BOOL)skipToNextEnqueuedTrack
 {
-    return (BOOL)_player->SkipToNextTrack();
+	return (BOOL)_player->SkipToNextTrack();
 }
 
 - (void)setEQValue:(float)value forEQBand:(int)band
 {
-    AudioUnitSetParameter(_equalizer, band, kAudioUnitScope_Global, 0, (Float32)value, 0);
+	AudioUnitSetParameter(_equalizer, band, kAudioUnitScope_Global, 0, (Float32)value, 0);
 }
 @end
