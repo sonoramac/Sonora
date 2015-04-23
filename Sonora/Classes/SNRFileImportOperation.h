@@ -28,10 +28,9 @@
  *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #import <Foundation/Foundation.h>
-#import "SNRFileCopyManager.h"
 
 @protocol SNRFileImportOperationDelegate;
-@interface SNRFileImportOperation : NSOperation <SNRFileCopyManagerDelegate>
+@interface SNRFileImportOperation : NSOperation
 @property (nonatomic, assign) id<SNRFileImportOperationDelegate> delegate;
 @property (nonatomic, readonly) NSArray *files;
 @property (nonatomic, assign) BOOL play;
