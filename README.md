@@ -52,7 +52,7 @@ pod install
 git submodule update --init --recursive
 ```
 
-- **SFBAudioEngine** requires frameworks that aren't included in the main repository. Download the Frameworks archive [here](https://github.com/downloads/sbooth/SFBAudioEngine/Frameworks.tar.bz2) and place the Frameworks folder inside Sonora/External/SFBAudioEngine/. 
+- **SFBAudioEngine** requires frameworks that aren't included in the main repository. Download the Frameworks archive [here](http://files.sbooth.org/SFBAudioEngine-dependencies.tar.bz2) and place the Frameworks folder inside Sonora/External/SFBAudioEngine/. 
 
 
 #### After you've followed either method:
